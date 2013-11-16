@@ -1,9 +1,10 @@
-﻿@{
+﻿@Model BasicMVCApp.Anmalan
+{
     Layout = null;
 }
 
 <!DOCTYPE html>
-
+<h1>@ViewBag.Arne</h1>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -12,6 +13,12 @@
 <body>
     <div>
         Hej
+        
+
+        
+@*         @Html.DropDownListFor(m => m.SelectedValue, new SelectList(Model.BuildinListOptions, "Building_Code", "Description"))*@
+@*            @Html.DropDownListFor(m => m.ContribType, new SelectList(Model.ContribTypeOptions, "ContribId", "Value", Model.ContribTypeOptions.First().ContribId))*@
+        
     </div>
 </body>
 </html>
