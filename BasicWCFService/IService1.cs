@@ -29,7 +29,7 @@ namespace BasicWCFService
     {
         bool boolValue = true;
         string stringValue = "Hello Hellsing ";
-        string stringValue = "Hello nICKLAS, du är bäst!!! ";
+        string stringValue2 = "Hello nICKLAS, du är bäst!!! ";
 
         [DataMember]
         public bool BoolValue
