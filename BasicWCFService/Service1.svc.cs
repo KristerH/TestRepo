@@ -5,6 +5,8 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using BasicWCFService.Datalayer;
+using BasicWCFService.Entities;
 
 namespace BasicWCFService
 {
@@ -28,6 +30,25 @@ namespace BasicWCFService
                 composite.StringValue += "Suffix";
             }
             return composite;
+        }
+
+        public List<Building> GetAllBuildings()
+        {
+            List<Building> EntitiesBuildingList = new List<Building>();
+
+            Prisma_FastighetEntities dbPrisma = new Prisma_FastighetEntities();
+            var EFBuildingList = dbPrisma.BLbuilding.ToList();
+
+            foreach (var EFbuilding in EFBuildingList)
+            {
+                Building building = new Building();
+                building.Building_Code = EFbuilding.blbuilding_code;
+                building.Description = EFbuilding.descr;
+
+                EntitiesBuildingList.Add(building);
+            }
+
+            return EntitiesBuildingList;
         }
     }
 }

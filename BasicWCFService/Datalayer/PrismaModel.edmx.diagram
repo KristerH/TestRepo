@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="922560ae9db7421f819355ad7647ec51" Name="Diagram1" ZoomLevel="98">
+        <EntityTypeShape EntityType="Prisma_FastighetModel.BLbuilding" Width="1.5" PointX="2.125" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Prisma_FastighetModel.BLfloor" Width="1.5" PointX="4" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Prisma_FastighetModel.BLroom" Width="1.5" PointX="6.125" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Prisma_FastighetModel.WOrequest" Width="1.5" PointX="8.125" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="Prisma_FastighetModel.FK_BL_floor_BL_building" ManuallyRouted="false" />
+        <AssociationConnector Association="Prisma_FastighetModel.FK_BL_room_BL_floor" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

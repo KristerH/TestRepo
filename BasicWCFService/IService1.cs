@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using BasicWCFService.Entities;
 
 namespace BasicWCFService
 {
@@ -20,6 +21,8 @@ namespace BasicWCFService
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: Add your service operations here
+        [OperationContract]
+        List<Building> GetAllBuildings();
     }
 
 

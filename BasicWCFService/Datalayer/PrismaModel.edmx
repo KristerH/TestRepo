@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Prisma_FastighetModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Prisma_FastighetModelStoreContainer">
+          <EntitySet Name="BLbuilding" EntityType="Prisma_FastighetModel.Store.BLbuilding" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BLfloor" EntityType="Prisma_FastighetModel.Store.BLfloor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BLroom" EntityType="Prisma_FastighetModel.Store.BLroom" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WOrequest" EntityType="Prisma_FastighetModel.Store.WOrequest" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_BL_floor_BL_building" Association="Prisma_FastighetModel.Store.FK_BL_floor_BL_building">
+            <End Role="BLbuilding" EntitySet="BLbuilding" />
+            <End Role="BLfloor" EntitySet="BLfloor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BL_room_BL_floor" Association="Prisma_FastighetModel.Store.FK_BL_room_BL_floor">
+            <End Role="BLfloor" EntitySet="BLfloor" />
+            <End Role="BLroom" EntitySet="BLroom" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BLbuilding">
+          <Key>
+            <PropertyRef Name="blbuilding_code" />
+          </Key>
+          <Property Name="blbuilding_code" Type="varchar" Nullable="false" MaxLength="12" />
+          <Property Name="descr" Type="varchar" MaxLength="30" />
+          <Property Name="address1" Type="varchar" MaxLength="30" />
+          <Property Name="address2" Type="varchar" MaxLength="30" />
+          <Property Name="blproperty_code" Type="varchar" MaxLength="12" />
+          <Property Name="blstatus_code" Type="varchar" MaxLength="8" />
+          <Property Name="blcategory_code" Type="varchar" MaxLength="8" />
+          <Property Name="blzone_code" Type="varchar" MaxLength="8" />
+          <Property Name="owner" Type="varchar" MaxLength="30" />
+          <Property Name="constructdate" Type="datetime" />
+          <Property Name="acquireddate" Type="datetime" />
+          <Property Name="BTA" Type="decimal" Precision="12" Scale="4" />
+          <Property Name="BRA" Type="decimal" Precision="12" Scale="4" />
+          <Property Name="STA" Type="decimal" Precision="12" Scale="4" />
+          <Property Name="MA" Type="decimal" Precision="12" Scale="4" />
+          <Property Name="BTV" Type="decimal" Precision="12" Scale="4" />
+          <Property Name="BTAt" Type="decimal" Precision="12" Scale="4" />
+          <Property Name="NTA" Type="decimal" Precision="12" Scale="4" />
+          <Property Name="BYA" Type="decimal" Precision="12" Scale="4" />
+          <Property Name="BTVt" Type="decimal" Precision="12" Scale="4" />
+          <Property Name="buaccount1_code" Type="varchar" MaxLength="12" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="tablerecnum" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="inactive" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="BLfloor">
+          <Key>
+            <PropertyRef Name="blbuilding_code" />
+            <PropertyRef Name="blfloor_code" />
+          </Key>
+          <Property Name="blbuilding_code" Type="varchar" Nullable="false" MaxLength="12" />
+          <Property Name="blfloor_code" Type="varchar" Nullable="false" MaxLength="8" />
+          <Property Name="descr" Type="varchar" MaxLength="30" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BLroom">
+          <Key>
+            <PropertyRef Name="blbuilding_code" />
+            <PropertyRef Name="blfloor_code" />
+            <PropertyRef Name="blroom_code" />
+          </Key>
+          <Property Name="blbuilding_code" Type="varchar" Nullable="false" MaxLength="12" />
+          <Property Name="blfloor_code" Type="varchar" Nullable="false" MaxLength="8" />
+          <Property Name="blroom_code" Type="varchar" Nullable="false" MaxLength="8" />
+          <Property Name="descr" Type="varchar" MaxLength="30" />
+          <Property Name="blstatus_code" Type="varchar" MaxLength="8" />
+          <Property Name="area" Type="decimal" Precision="12" Scale="4" />
+          <Property Name="blroomcls_code" Type="varchar" MaxLength="8" />
+          <Property Name="blroomclstype_code" Type="varchar" MaxLength="8" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WOrequest">
+          <Key>
+            <PropertyRef Name="worequest_code" />
+          </Key>
+          <Property Name="worequest_code" Type="int" Nullable="false" />
+          <Property Name="createddate" Type="datetime" />
+          <Property Name="createdby" Type="varchar" MaxLength="12" />
+          <Property Name="status" Type="varchar" MaxLength="4" />
+          <Property Name="blbuilding_code" Type="varchar" MaxLength="12" />
+          <Property Name="blfloor_code" Type="varchar" MaxLength="8" />
+          <Property Name="blroom_code" Type="varchar" MaxLength="8" />
+          <Property Name="ascatalog_code" Type="varchar" MaxLength="25" />
+          <Property Name="woaction_code" Type="varchar" MaxLength="12" />
+          <Property Name="descr" Type="varchar" MaxLength="240" />
+          <Property Name="wo_code" Type="int" />
+          <Property Name="partwo_code" Type="int" />
+          <Property Name="requestor" Type="varchar" MaxLength="30" />
+          <Property Name="reqphone" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <Association Name="FK_BL_floor_BL_building">
+          <End Role="BLbuilding" Type="Prisma_FastighetModel.Store.BLbuilding" Multiplicity="1" />
+          <End Role="BLfloor" Type="Prisma_FastighetModel.Store.BLfloor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BLbuilding">
+              <PropertyRef Name="blbuilding_code" />
+            </Principal>
+            <Dependent Role="BLfloor">
+              <PropertyRef Name="blbuilding_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BL_room_BL_floor">
+          <End Role="BLfloor" Type="Prisma_FastighetModel.Store.BLfloor" Multiplicity="1" />
+          <End Role="BLroom" Type="Prisma_FastighetModel.Store.BLroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BLfloor">
+              <PropertyRef Name="blbuilding_code" />
+              <PropertyRef Name="blfloor_code" />
+            </Principal>
+            <Dependent Role="BLroom">
+              <PropertyRef Name="blbuilding_code" />
+              <PropertyRef Name="blfloor_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Prisma_FastighetModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Prisma_FastighetEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="BLbuilding" EntityType="Prisma_FastighetModel.BLbuilding" />
+          <EntitySet Name="BLfloor" EntityType="Prisma_FastighetModel.BLfloor" />
+          <EntitySet Name="BLroom" EntityType="Prisma_FastighetModel.BLroom" />
+          <EntitySet Name="WOrequest" EntityType="Prisma_FastighetModel.WOrequest" />
+          <AssociationSet Name="FK_BL_floor_BL_building" Association="Prisma_FastighetModel.FK_BL_floor_BL_building">
+            <End Role="BLbuilding" EntitySet="BLbuilding" />
+            <End Role="BLfloor" EntitySet="BLfloor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BL_room_BL_floor" Association="Prisma_FastighetModel.FK_BL_room_BL_floor">
+            <End Role="BLfloor" EntitySet="BLfloor" />
+            <End Role="BLroom" EntitySet="BLroom" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BLbuilding">
+          <Key>
+            <PropertyRef Name="blbuilding_code" />
+          </Key>
+          <Property Name="blbuilding_code" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="descr" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="address1" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="address2" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="blproperty_code" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="blstatus_code" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="blcategory_code" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="blzone_code" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="owner" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="constructdate" Type="DateTime" Precision="3" />
+          <Property Name="acquireddate" Type="DateTime" Precision="3" />
+          <Property Name="BTA" Type="Decimal" Precision="12" Scale="4" />
+          <Property Name="BRA" Type="Decimal" Precision="12" Scale="4" />
+          <Property Name="STA" Type="Decimal" Precision="12" Scale="4" />
+          <Property Name="MA" Type="Decimal" Precision="12" Scale="4" />
+          <Property Name="BTV" Type="Decimal" Precision="12" Scale="4" />
+          <Property Name="BTAt" Type="Decimal" Precision="12" Scale="4" />
+          <Property Name="NTA" Type="Decimal" Precision="12" Scale="4" />
+          <Property Name="BYA" Type="Decimal" Precision="12" Scale="4" />
+          <Property Name="BTVt" Type="Decimal" Precision="12" Scale="4" />
+          <Property Name="buaccount1_code" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="tablerecnum" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="inactive" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="BLfloor" Relationship="Prisma_FastighetModel.FK_BL_floor_BL_building" FromRole="BLbuilding" ToRole="BLfloor" />
+        </EntityType>
+        <EntityType Name="BLfloor">
+          <Key>
+            <PropertyRef Name="blbuilding_code" />
+            <PropertyRef Name="blfloor_code" />
+          </Key>
+          <Property Name="blbuilding_code" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="blfloor_code" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="descr" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BLbuilding" Relationship="Prisma_FastighetModel.FK_BL_floor_BL_building" FromRole="BLfloor" ToRole="BLbuilding" />
+          <NavigationProperty Name="BLroom" Relationship="Prisma_FastighetModel.FK_BL_room_BL_floor" FromRole="BLfloor" ToRole="BLroom" />
+        </EntityType>
+        <EntityType Name="BLroom">
+          <Key>
+            <PropertyRef Name="blbuilding_code" />
+            <PropertyRef Name="blfloor_code" />
+            <PropertyRef Name="blroom_code" />
+          </Key>
+          <Property Name="blbuilding_code" Type="String" Nullable="false" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="blfloor_code" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="blroom_code" Type="String" Nullable="false" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="descr" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="blstatus_code" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="area" Type="Decimal" Precision="12" Scale="4" />
+          <Property Name="blroomcls_code" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="blroomclstype_code" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BLfloor" Relationship="Prisma_FastighetModel.FK_BL_room_BL_floor" FromRole="BLroom" ToRole="BLfloor" />
+        </EntityType>
+        <EntityType Name="WOrequest">
+          <Key>
+            <PropertyRef Name="worequest_code" />
+          </Key>
+          <Property Name="worequest_code" Type="Int32" Nullable="false" />
+          <Property Name="createddate" Type="DateTime" Precision="3" />
+          <Property Name="createdby" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="status" Type="String" MaxLength="4" Unicode="false" FixedLength="false" />
+          <Property Name="blbuilding_code" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="blfloor_code" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="blroom_code" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="ascatalog_code" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="woaction_code" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="descr" Type="String" MaxLength="240" Unicode="false" FixedLength="false" />
+          <Property Name="wo_code" Type="Int32" />
+          <Property Name="partwo_code" Type="Int32" />
+          <Property Name="requestor" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="reqphone" Type="String" MaxLength="15" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_BL_floor_BL_building">
+          <End Role="BLbuilding" Type="Prisma_FastighetModel.BLbuilding" Multiplicity="1" />
+          <End Role="BLfloor" Type="Prisma_FastighetModel.BLfloor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BLbuilding">
+              <PropertyRef Name="blbuilding_code" />
+            </Principal>
+            <Dependent Role="BLfloor">
+              <PropertyRef Name="blbuilding_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BL_room_BL_floor">
+          <End Role="BLfloor" Type="Prisma_FastighetModel.BLfloor" Multiplicity="1" />
+          <End Role="BLroom" Type="Prisma_FastighetModel.BLroom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BLfloor">
+              <PropertyRef Name="blbuilding_code" />
+              <PropertyRef Name="blfloor_code" />
+            </Principal>
+            <Dependent Role="BLroom">
+              <PropertyRef Name="blbuilding_code" />
+              <PropertyRef Name="blfloor_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Prisma_FastighetModelStoreContainer" CdmEntityContainer="Prisma_FastighetEntities">
+          <EntitySetMapping Name="BLbuilding">
+            <EntityTypeMapping TypeName="Prisma_FastighetModel.BLbuilding">
+              <MappingFragment StoreEntitySet="BLbuilding">
+                <ScalarProperty Name="blbuilding_code" ColumnName="blbuilding_code" />
+                <ScalarProperty Name="descr" ColumnName="descr" />
+                <ScalarProperty Name="address1" ColumnName="address1" />
+                <ScalarProperty Name="address2" ColumnName="address2" />
+                <ScalarProperty Name="blproperty_code" ColumnName="blproperty_code" />
+                <ScalarProperty Name="blstatus_code" ColumnName="blstatus_code" />
+                <ScalarProperty Name="blcategory_code" ColumnName="blcategory_code" />
+                <ScalarProperty Name="blzone_code" ColumnName="blzone_code" />
+                <ScalarProperty Name="owner" ColumnName="owner" />
+                <ScalarProperty Name="constructdate" ColumnName="constructdate" />
+                <ScalarProperty Name="acquireddate" ColumnName="acquireddate" />
+                <ScalarProperty Name="BTA" ColumnName="BTA" />
+                <ScalarProperty Name="BRA" ColumnName="BRA" />
+                <ScalarProperty Name="STA" ColumnName="STA" />
+                <ScalarProperty Name="MA" ColumnName="MA" />
+                <ScalarProperty Name="BTV" ColumnName="BTV" />
+                <ScalarProperty Name="BTAt" ColumnName="BTAt" />
+                <ScalarProperty Name="NTA" ColumnName="NTA" />
+                <ScalarProperty Name="BYA" ColumnName="BYA" />
+                <ScalarProperty Name="BTVt" ColumnName="BTVt" />
+                <ScalarProperty Name="buaccount1_code" ColumnName="buaccount1_code" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="tablerecnum" ColumnName="tablerecnum" />
+                <ScalarProperty Name="inactive" ColumnName="inactive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BLfloor">
+            <EntityTypeMapping TypeName="Prisma_FastighetModel.BLfloor">
+              <MappingFragment StoreEntitySet="BLfloor">
+                <ScalarProperty Name="blbuilding_code" ColumnName="blbuilding_code" />
+                <ScalarProperty Name="blfloor_code" ColumnName="blfloor_code" />
+                <ScalarProperty Name="descr" ColumnName="descr" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BLroom">
+            <EntityTypeMapping TypeName="Prisma_FastighetModel.BLroom">
+              <MappingFragment StoreEntitySet="BLroom">
+                <ScalarProperty Name="blbuilding_code" ColumnName="blbuilding_code" />
+                <ScalarProperty Name="blfloor_code" ColumnName="blfloor_code" />
+                <ScalarProperty Name="blroom_code" ColumnName="blroom_code" />
+                <ScalarProperty Name="descr" ColumnName="descr" />
+                <ScalarProperty Name="blstatus_code" ColumnName="blstatus_code" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="blroomcls_code" ColumnName="blroomcls_code" />
+                <ScalarProperty Name="blroomclstype_code" ColumnName="blroomclstype_code" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WOrequest">
+            <EntityTypeMapping TypeName="Prisma_FastighetModel.WOrequest">
+              <MappingFragment StoreEntitySet="WOrequest">
+                <ScalarProperty Name="worequest_code" ColumnName="worequest_code" />
+                <ScalarProperty Name="createddate" ColumnName="createddate" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="blbuilding_code" ColumnName="blbuilding_code" />
+                <ScalarProperty Name="blfloor_code" ColumnName="blfloor_code" />
+                <ScalarProperty Name="blroom_code" ColumnName="blroom_code" />
+                <ScalarProperty Name="ascatalog_code" ColumnName="ascatalog_code" />
+                <ScalarProperty Name="woaction_code" ColumnName="woaction_code" />
+                <ScalarProperty Name="descr" ColumnName="descr" />
+                <ScalarProperty Name="wo_code" ColumnName="wo_code" />
+                <ScalarProperty Name="partwo_code" ColumnName="partwo_code" />
+                <ScalarProperty Name="requestor" ColumnName="requestor" />
+                <ScalarProperty Name="reqphone" ColumnName="reqphone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
