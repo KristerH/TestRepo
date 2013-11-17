@@ -14,11 +14,6 @@ namespace BasicWCFService
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        public string GetData(int value)
-        {
-            return string.Format("You entered: {0}", value);
-        }
-
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
             if (composite == null)
@@ -41,14 +36,38 @@ namespace BasicWCFService
 
             foreach (var EFbuilding in EFBuildingList)
             {
-                Building building = new Building();
-                building.Building_Code = EFbuilding.blbuilding_code;
-                building.Description = EFbuilding.descr;
+                Building building = new Building
+                    {
+                        BuildingCode = EFbuilding.blbuilding_code,
+                        Description = EFbuilding.descr
+                    };
 
                 EntitiesBuildingList.Add(building);
             }
 
             return EntitiesBuildingList;
+        }
+
+        public List<Floor> GetFloors(string buildingCode)
+        {
+            if (string.IsNullOrEmpty(buildingCode))
+                throw new Exception("Building code cannot be empty"); //Kan göras om till ett businessexception
+
+            List<Floor> floorList = new List<Floor>();
+
+            Prisma_FastighetEntities dbPrisma = new Prisma_FastighetEntities();
+            List<BLfloor> blfloorList = dbPrisma.BLfloor.Where(x => x.blbuilding_code == buildingCode).ToList();
+
+            foreach (var blFloor in blfloorList)
+            {
+                Floor floor = new Floor();
+                floor.BuildingCode = blFloor.blbuilding_code;
+                floor.FloorCode = blFloor.blfloor_code;
+                floor.Description = blFloor.descr;
+                floorList.Add(floor);
+            }
+
+            return floorList;
         }
     }
 }

@@ -84,7 +84,7 @@ namespace BasicMvcApp.BasicWCF {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Building_CodeField;
+        private string BuildingCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescriptionField;
@@ -100,14 +100,14 @@ namespace BasicMvcApp.BasicWCF {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Building_Code {
+        public string BuildingCode {
             get {
-                return this.Building_CodeField;
+                return this.BuildingCodeField;
             }
             set {
-                if ((object.ReferenceEquals(this.Building_CodeField, value) != true)) {
-                    this.Building_CodeField = value;
-                    this.RaisePropertyChanged("Building_Code");
+                if ((object.ReferenceEquals(this.BuildingCodeField, value) != true)) {
+                    this.BuildingCodeField = value;
+                    this.RaisePropertyChanged("BuildingCode");
                 }
             }
         }
@@ -135,15 +135,86 @@ namespace BasicMvcApp.BasicWCF {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Floor", Namespace="http://schemas.datacontract.org/2004/07/BasicWCFService.Entities")]
+    [System.SerializableAttribute()]
+    public partial class Floor : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BuildingCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FloorCodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BuildingCode {
+            get {
+                return this.BuildingCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BuildingCodeField, value) != true)) {
+                    this.BuildingCodeField = value;
+                    this.RaisePropertyChanged("BuildingCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FloorCode {
+            get {
+                return this.FloorCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FloorCodeField, value) != true)) {
+                    this.FloorCodeField = value;
+                    this.RaisePropertyChanged("FloorCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BasicWCF.IService1")]
     public interface IService1 {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
-        string GetData(int value);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetData", ReplyAction="http://tempuri.org/IService1/GetDataResponse")]
-        System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
         BasicMvcApp.BasicWCF.CompositeType GetDataUsingDataContract(BasicMvcApp.BasicWCF.CompositeType composite);
@@ -156,6 +227,12 @@ namespace BasicMvcApp.BasicWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllBuildings", ReplyAction="http://tempuri.org/IService1/GetAllBuildingsResponse")]
         System.Threading.Tasks.Task<BasicMvcApp.BasicWCF.Building[]> GetAllBuildingsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFloors", ReplyAction="http://tempuri.org/IService1/GetFloorsResponse")]
+        BasicMvcApp.BasicWCF.Floor[] GetFloors(string buildingCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFloors", ReplyAction="http://tempuri.org/IService1/GetFloorsResponse")]
+        System.Threading.Tasks.Task<BasicMvcApp.BasicWCF.Floor[]> GetFloorsAsync(string buildingCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -185,14 +262,6 @@ namespace BasicMvcApp.BasicWCF {
                 base(binding, remoteAddress) {
         }
         
-        public string GetData(int value) {
-            return base.Channel.GetData(value);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetDataAsync(int value) {
-            return base.Channel.GetDataAsync(value);
-        }
-        
         public BasicMvcApp.BasicWCF.CompositeType GetDataUsingDataContract(BasicMvcApp.BasicWCF.CompositeType composite) {
             return base.Channel.GetDataUsingDataContract(composite);
         }
@@ -207,6 +276,14 @@ namespace BasicMvcApp.BasicWCF {
         
         public System.Threading.Tasks.Task<BasicMvcApp.BasicWCF.Building[]> GetAllBuildingsAsync() {
             return base.Channel.GetAllBuildingsAsync();
+        }
+        
+        public BasicMvcApp.BasicWCF.Floor[] GetFloors(string buildingCode) {
+            return base.Channel.GetFloors(buildingCode);
+        }
+        
+        public System.Threading.Tasks.Task<BasicMvcApp.BasicWCF.Floor[]> GetFloorsAsync(string buildingCode) {
+            return base.Channel.GetFloorsAsync(buildingCode);
         }
     }
 }

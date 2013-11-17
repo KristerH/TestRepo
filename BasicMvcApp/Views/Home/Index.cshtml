@@ -1,4 +1,4 @@
-﻿@Model BasicMVCApp.Anmalan
+﻿@model BasicMvcApp.Models.Anmalan
 {
     Layout = null;
 }
@@ -13,12 +13,13 @@
 <body>
     <div>
         Hej
-        
-
-        
-@*         @Html.DropDownListFor(m => m.SelectedValue, new SelectList(Model.BuildinListOptions, "Building_Code", "Description"))*@
-@*            @Html.DropDownListFor(m => m.ContribType, new SelectList(Model.ContribTypeOptions, "ContribId", "Value", Model.ContribTypeOptions.First().ContribId))*@
-        
+        <form action="/Home/Index" method="post" enctype="multipart/form-data" name="form1" id="form1">                
+            @Html.DropDownListFor(m => m.SelectedBuildingCode, new SelectList(Model.BuildingList, "BuildingCode", "Description" ), "Välj en byggnad")
+            <br/>
+            @Html.DropDownListFor(m => m.SelectedFloorCode, new SelectList(Model.FloorList, "FloorCode", "Description" ), "Välj en våning")
+            <br/>
+            <button onclick="forms(0).submit()">Skicka</button>
+        </form>
     </div>
 </body>
 </html>

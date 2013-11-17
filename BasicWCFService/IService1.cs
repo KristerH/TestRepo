@@ -13,26 +13,23 @@ namespace BasicWCFService
     [ServiceContract]
     public interface IService1
     {
-
-        [OperationContract]
-        string GetData(int value);
-
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         // TODO: Add your service operations here
         [OperationContract]
         List<Building> GetAllBuildings();
-    }
 
+        [OperationContract]
+        List<Floor> GetFloors(String buildingCode);
+    }
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     [DataContract]
     public class CompositeType
     {
         bool boolValue = true;
-        string stringValue = "Hello Hellsing ";
-        string stringValue2 = "Hello nICKLAS, du är bäst!!! ";
+        string stringValue = "";
 
         [DataMember]
         public bool BoolValue

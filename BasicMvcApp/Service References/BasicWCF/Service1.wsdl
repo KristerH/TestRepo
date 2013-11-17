@@ -8,12 +8,6 @@
       <xsd:import schemaLocation="http://localhost:52504/Service1.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/BasicWCFService.Entities" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IService1_GetData_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetData" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetData_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDataResponse" />
-  </wsdl:message>
   <wsdl:message name="IService1_GetDataUsingDataContract_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
   </wsdl:message>
@@ -26,11 +20,13 @@
   <wsdl:message name="IService1_GetAllBuildings_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllBuildingsResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetFloors_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFloors" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetFloors_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFloorsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
-    <wsdl:operation name="GetData">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataResponse" message="tns:IService1_GetData_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetDataUsingDataContract">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContract" message="tns:IService1_GetDataUsingDataContract_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDataUsingDataContractResponse" message="tns:IService1_GetDataUsingDataContract_OutputMessage" />
@@ -39,18 +35,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllBuildings" message="tns:IService1_GetAllBuildings_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllBuildingsResponse" message="tns:IService1_GetAllBuildings_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetFloors">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetFloors" message="tns:IService1_GetFloors_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetFloorsResponse" message="tns:IService1_GetFloors_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetData">
-      <soap:operation soapAction="http://tempuri.org/IService1/GetData" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetDataUsingDataContract">
       <soap:operation soapAction="http://tempuri.org/IService1/GetDataUsingDataContract" style="document" />
       <wsdl:input>
@@ -62,6 +53,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllBuildings">
       <soap:operation soapAction="http://tempuri.org/IService1/GetAllBuildings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFloors">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetFloors" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

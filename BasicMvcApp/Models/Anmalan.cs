@@ -20,33 +20,10 @@ namespace BasicMvcApp.Models
 
     public class Anmalan
     {
+        public IEnumerable<Building> BuildingList  { get; set; }
+        public string SelectedBuildingCode { get; set; }
 
-        public class Contrib
-        {
-            public int ContribId { get; set; }
-            public string Value { get; set; }
-        }
-
-        public IEnumerable<Contrib> ContribTypeOptions =
-            new List<Contrib>
-        {
-            new Contrib {ContribId = 0, Value = "Payroll Deduction"},
-            new Contrib {ContribId = 1, Value = "Bill Me"}
-        };
-
-        [DisplayName("Contribution Type")]
-        public string ContribType { get; set; }
-
-        //public IEnumerable<Building> BuildinListOptions = new List<Building>
-        //{
-        //    new Building {Building_Code = "0", Description = "Payroll Deduction"},
-        //    new Building {Building_Code = "1", Description = "Bill Me"}
-        //};
-
-            
-            //BuildingList;
-
-        public List<Building> BuildingList  { get; set; } 
-        
+        public IEnumerable<Floor> FloorList { get; set; }
+        public string SelectedFloorCode { get; set; }    
     }
 }

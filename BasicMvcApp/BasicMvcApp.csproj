@@ -133,14 +133,16 @@
     <Content Include="Service References\BasicWCF\BasicMvcApp.BasicWCF.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\BasicWCF\Service1.disco" />
-    <Content Include="Service References\BasicWCF\configuration91.svcinfo" />
-    <Content Include="Service References\BasicWCF\configuration.svcinfo" />
-    <Content Include="Service References\BasicWCF\Reference.svcmap">
+    <Content Include="Service References\BasicWCF\BasicMvcApp.BasicWCF.Floor.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\BasicWCF\Service1.disco" />
+    <None Include="Service References\BasicWCF\configuration91.svcinfo" />
+    <None Include="Service References\BasicWCF\configuration.svcinfo" />
+    <None Include="Service References\BasicWCF\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\HtmlPage1.html" />
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -149,7 +151,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Service References\BasicWCF\Service1.wsdl" />
+    <None Include="Service References\BasicWCF\Service1.wsdl" />
     <None Include="Service References\BasicWCF\Service13.xsd">
       <SubType>Designer</SubType>
     </None>

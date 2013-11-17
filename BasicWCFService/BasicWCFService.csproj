@@ -94,6 +94,7 @@
       <DependentUpon>PrismaModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Entities\Building.cs" />
+    <Compile Include="Entities\Floor.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>

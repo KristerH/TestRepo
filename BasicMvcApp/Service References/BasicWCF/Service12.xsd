@@ -8,9 +8,23 @@
   <xs:element name="ArrayOfBuilding" nillable="true" type="tns:ArrayOfBuilding" />
   <xs:complexType name="Building">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Building_Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BuildingCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Building" nillable="true" type="tns:Building" />
+  <xs:complexType name="ArrayOfFloor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Floor" nillable="true" type="tns:Floor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFloor" nillable="true" type="tns:ArrayOfFloor" />
+  <xs:complexType name="Floor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BuildingCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FloorCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Floor" nillable="true" type="tns:Floor" />
 </xs:schema>
