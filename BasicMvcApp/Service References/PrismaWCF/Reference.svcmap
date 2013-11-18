@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="95107da8-c96a-4c61-b2b7-3e405945755a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:52504/PrismaService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PrismaService.xsd" MetadataType="Schema" ID="89f8d7bb-d72d-4466-94e9-15b80e73dadf" SourceId="1" SourceUrl="http://localhost:52504/PrismaService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PrismaService.wsdl" MetadataType="Wsdl" ID="4f9c78ff-052c-4f23-a1c7-c03331f80a88" SourceId="1" SourceUrl="http://localhost:52504/PrismaService.svc?wsdl" />
+    <MetadataFile FileName="PrismaService1.xsd" MetadataType="Schema" ID="d5043f13-bc22-4e09-a708-bc673b01b3be" SourceId="1" SourceUrl="http://localhost:52504/PrismaService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PrismaService2.xsd" MetadataType="Schema" ID="d9819a4c-9cf0-403d-8a1a-ca490d0cfb5e" SourceId="1" SourceUrl="http://localhost:52504/PrismaService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PrismaService.disco" MetadataType="Disco" ID="2eb17f98-d292-4d61-ad97-e5a33c7bcf7a" SourceId="1" SourceUrl="http://localhost:52504/PrismaService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -14,10 +14,15 @@
     <div>
         Hej
         <form action="/Home/Index" method="post" enctype="multipart/form-data" name="form1" id="form1">                
-            @Html.DropDownListFor(m => m.SelectedBuildingCode, new SelectList(Model.BuildingList, "BuildingCode", "Description" ), "Välj en byggnad")
+            @Html.DropDownListFor(m => m.SelectedBuildingCode, new SelectList(Model.BuildingList, "BuildingCode", "Description" ), "Välj en byggnad", new { @onchange="forms(0).submit();" }))
             <br/>
-            @Html.DropDownListFor(m => m.SelectedFloorCode, new SelectList(Model.FloorList, "FloorCode", "Description" ), "Välj en våning")
+            @Html.DropDownListFor(m => m.SelectedFloorCode, new SelectList(Model.FloorList, "FloorCode", "Description" ), "Välj en våning", new { @onchange="forms(0).submit();" }))
             <br/>
+            @Html.DropDownListFor(m => m.SelectedRoomCode, new SelectList(Model.RoomList, "RoomCode", "Description" ), "Välj ett rum")
+            <br/>            
+        </form>
+        <form action="/Home/Index" method="post" enctype="multipart/form-data" name="form2" id="form2">                
+            <!--TODO Lite mer saker att fylla i-->
             <button onclick="forms(0).submit()">Skicka</button>
         </form>
     </div>

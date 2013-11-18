@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="TwoToWin.Prisma.BasicWCFService.PrismaService" CodeBehind="PrismaService.svc.cs" %>

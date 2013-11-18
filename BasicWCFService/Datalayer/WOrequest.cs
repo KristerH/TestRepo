@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BasicWCFService.Datalayer
+namespace TwoToWin.Prisma.BasicWCFService.Datalayer
 {
     using System;
     using System.Collections.Generic;

@@ -3,12 +3,12 @@
 namespace TwoToWin.Prisma.BasicWCFService.Entities
 {
     [DataContract]
-    public class Building
+    public class Room
     {
         [DataMember]
-        public string BuildingCode { get; set; }
+        public string RoomCode { get; set; }
 
         [DataMember]
-        public string Description { get; set; }
+        public string Description;
     }
 }

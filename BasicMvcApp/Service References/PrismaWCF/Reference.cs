@@ -8,75 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BasicMvcApp.BasicWCF {
+namespace BasicMvcApp.PrismaWCF {
     using System.Runtime.Serialization;
     using System;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/BasicWCFService")]
-    [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
-            get {
-                return this.BoolValueField;
-            }
-            set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
-            get {
-                return this.StringValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Building", Namespace="http://schemas.datacontract.org/2004/07/BasicWCFService.Entities")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Building", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities")]
     [System.SerializableAttribute()]
     public partial class Building : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -137,7 +76,7 @@ namespace BasicMvcApp.BasicWCF {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Floor", Namespace="http://schemas.datacontract.org/2004/07/BasicWCFService.Entities")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Floor", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities")]
     [System.SerializableAttribute()]
     public partial class Floor : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -212,78 +151,139 @@ namespace BasicMvcApp.BasicWCF {
         }
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BasicWCF.IService1")]
-    public interface IService1 {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Room", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities")]
+    [System.SerializableAttribute()]
+    public partial class Room : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        BasicMvcApp.BasicWCF.CompositeType GetDataUsingDataContract(BasicMvcApp.BasicWCF.CompositeType composite);
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService1/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<BasicMvcApp.BasicWCF.CompositeType> GetDataUsingDataContractAsync(BasicMvcApp.BasicWCF.CompositeType composite);
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllBuildings", ReplyAction="http://tempuri.org/IService1/GetAllBuildingsResponse")]
-        BasicMvcApp.BasicWCF.Building[] GetAllBuildings();
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomCodeField;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllBuildings", ReplyAction="http://tempuri.org/IService1/GetAllBuildingsResponse")]
-        System.Threading.Tasks.Task<BasicMvcApp.BasicWCF.Building[]> GetAllBuildingsAsync();
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFloors", ReplyAction="http://tempuri.org/IService1/GetFloorsResponse")]
-        BasicMvcApp.BasicWCF.Floor[] GetFloors(string buildingCode);
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetFloors", ReplyAction="http://tempuri.org/IService1/GetFloorsResponse")]
-        System.Threading.Tasks.Task<BasicMvcApp.BasicWCF.Floor[]> GetFloorsAsync(string buildingCode);
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomCode {
+            get {
+                return this.RoomCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomCodeField, value) != true)) {
+                    this.RoomCodeField = value;
+                    this.RaisePropertyChanged("RoomCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IService1Channel : BasicMvcApp.BasicWCF.IService1, System.ServiceModel.IClientChannel {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PrismaWCF.IPrismaService")]
+    public interface IPrismaService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetAllBuildings", ReplyAction="http://tempuri.org/IPrismaService/GetAllBuildingsResponse")]
+        BasicMvcApp.PrismaWCF.Building[] GetAllBuildings();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetAllBuildings", ReplyAction="http://tempuri.org/IPrismaService/GetAllBuildingsResponse")]
+        System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.Building[]> GetAllBuildingsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetFloors", ReplyAction="http://tempuri.org/IPrismaService/GetFloorsResponse")]
+        BasicMvcApp.PrismaWCF.Floor[] GetFloors(string buildingCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetFloors", ReplyAction="http://tempuri.org/IPrismaService/GetFloorsResponse")]
+        System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.Floor[]> GetFloorsAsync(string buildingCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetRooms", ReplyAction="http://tempuri.org/IPrismaService/GetRoomsResponse")]
+        BasicMvcApp.PrismaWCF.Room[] GetRooms(string buildingCode, string floorCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetRooms", ReplyAction="http://tempuri.org/IPrismaService/GetRoomsResponse")]
+        System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.Room[]> GetRoomsAsync(string buildingCode, string floorCode);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IPrismaServiceChannel : BasicMvcApp.PrismaWCF.IPrismaService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class Service1Client : System.ServiceModel.ClientBase<BasicMvcApp.BasicWCF.IService1>, BasicMvcApp.BasicWCF.IService1 {
+    public partial class PrismaServiceClient : System.ServiceModel.ClientBase<BasicMvcApp.PrismaWCF.IPrismaService>, BasicMvcApp.PrismaWCF.IPrismaService {
         
-        public Service1Client() {
+        public PrismaServiceClient() {
         }
         
-        public Service1Client(string endpointConfigurationName) : 
+        public PrismaServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public Service1Client(string endpointConfigurationName, string remoteAddress) : 
+        public PrismaServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public Service1Client(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public PrismaServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public PrismaServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public BasicMvcApp.BasicWCF.CompositeType GetDataUsingDataContract(BasicMvcApp.BasicWCF.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
-        }
-        
-        public System.Threading.Tasks.Task<BasicMvcApp.BasicWCF.CompositeType> GetDataUsingDataContractAsync(BasicMvcApp.BasicWCF.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContractAsync(composite);
-        }
-        
-        public BasicMvcApp.BasicWCF.Building[] GetAllBuildings() {
+        public BasicMvcApp.PrismaWCF.Building[] GetAllBuildings() {
             return base.Channel.GetAllBuildings();
         }
         
-        public System.Threading.Tasks.Task<BasicMvcApp.BasicWCF.Building[]> GetAllBuildingsAsync() {
+        public System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.Building[]> GetAllBuildingsAsync() {
             return base.Channel.GetAllBuildingsAsync();
         }
         
-        public BasicMvcApp.BasicWCF.Floor[] GetFloors(string buildingCode) {
+        public BasicMvcApp.PrismaWCF.Floor[] GetFloors(string buildingCode) {
             return base.Channel.GetFloors(buildingCode);
         }
         
-        public System.Threading.Tasks.Task<BasicMvcApp.BasicWCF.Floor[]> GetFloorsAsync(string buildingCode) {
+        public System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.Floor[]> GetFloorsAsync(string buildingCode) {
             return base.Channel.GetFloorsAsync(buildingCode);
+        }
+        
+        public BasicMvcApp.PrismaWCF.Room[] GetRooms(string buildingCode, string floorCode) {
+            return base.Channel.GetRooms(buildingCode, floorCode);
+        }
+        
+        public System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.Room[]> GetRoomsAsync(string buildingCode, string floorCode) {
+            return base.Channel.GetRoomsAsync(buildingCode, floorCode);
         }
     }
 }

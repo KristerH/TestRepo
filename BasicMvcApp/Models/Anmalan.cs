@@ -1,9 +1,9 @@
-﻿using BasicMvcApp.BasicWCF;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Web;
+using BasicMvcApp.PrismaWCF;
 
 namespace BasicMvcApp.Models
 
@@ -24,6 +24,9 @@ namespace BasicMvcApp.Models
         public string SelectedBuildingCode { get; set; }
 
         public IEnumerable<Floor> FloorList { get; set; }
-        public string SelectedFloorCode { get; set; }    
+        public string SelectedFloorCode { get; set; }
+
+        public IEnumerable<Room> RoomList { get; set; }
+        public string SelectedRoomCode { get; set; }   
     }
 }

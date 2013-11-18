@@ -1,10 +1,10 @@
-﻿using BasicMvcApp.BasicWCF;
-using BasicMvcApp.Models;
+﻿using BasicMvcApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BasicMvcApp.PrismaWCF;
 
 namespace BasicMvcApp.Controllers
 {
@@ -14,7 +14,8 @@ namespace BasicMvcApp.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            BasicWCF.Service1Client client = new BasicWCF.Service1Client();
+
+            PrismaServiceClient client = new PrismaServiceClient();
             var buildings = client.GetAllBuildings();
             client.Close();
             
@@ -22,6 +23,7 @@ namespace BasicMvcApp.Controllers
             anmalan.BuildingList = new List<Building>(buildings);
 
             anmalan.FloorList = new List<Floor>();
+            anmalan.RoomList = new List<Room>();
 
             return View(anmalan);
         }
@@ -33,16 +35,32 @@ namespace BasicMvcApp.Controllers
             Anmalan anmalan = new Anmalan();
 
             //Building
-            BasicWCF.Service1Client client = new BasicWCF.Service1Client();
+            PrismaServiceClient client = new PrismaServiceClient();
             var buildings = client.GetAllBuildings();
             anmalan.BuildingList = new List<Building>(buildings);
             anmalan.SelectedBuildingCode = incomingAnmalan.SelectedBuildingCode;
 
             //Floor
-            var floors = client.GetFloors(anmalan.SelectedBuildingCode);
-            anmalan.FloorList = new List<Floor>(floors);
+            if (anmalan.SelectedBuildingCode != null)
+            {
+                var floors = client.GetFloors(anmalan.SelectedBuildingCode);
+                anmalan.FloorList = new List<Floor>(floors);
+                anmalan.SelectedFloorCode = incomingAnmalan.SelectedFloorCode;
+            }
+            else
+            {
+                anmalan.FloorList = new List<Floor>();
+            }
 
-            //TODO processa floorcode här och hämta alla rum.
+            if(anmalan.SelectedFloorCode != null)
+            {
+                var rooms = client.GetRooms(anmalan.SelectedBuildingCode, anmalan.SelectedFloorCode);
+                anmalan.RoomList = new List<Room>(rooms);
+            }
+            else
+            {
+                anmalan.RoomList = new List<Room>();
+            }
 
             client.Close();
             return View(anmalan);
