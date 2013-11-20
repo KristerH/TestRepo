@@ -212,6 +212,67 @@ namespace BasicMvcApp.PrismaWCF {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ActionEntity", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities")]
+    [System.SerializableAttribute()]
+    public partial class ActionEntity : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ActionCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ActionCode {
+            get {
+                return this.ActionCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ActionCodeField, value) != true)) {
+                    this.ActionCodeField = value;
+                    this.RaisePropertyChanged("ActionCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PrismaWCF.IPrismaService")]
     public interface IPrismaService {
@@ -233,6 +294,12 @@ namespace BasicMvcApp.PrismaWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetRooms", ReplyAction="http://tempuri.org/IPrismaService/GetRoomsResponse")]
         System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.Room[]> GetRoomsAsync(string buildingCode, string floorCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetAllWORequestActions", ReplyAction="http://tempuri.org/IPrismaService/GetAllWORequestActionsResponse")]
+        BasicMvcApp.PrismaWCF.ActionEntity[] GetAllWORequestActions();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetAllWORequestActions", ReplyAction="http://tempuri.org/IPrismaService/GetAllWORequestActionsResponse")]
+        System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.ActionEntity[]> GetAllWORequestActionsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -284,6 +351,14 @@ namespace BasicMvcApp.PrismaWCF {
         
         public System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.Room[]> GetRoomsAsync(string buildingCode, string floorCode) {
             return base.Channel.GetRoomsAsync(buildingCode, floorCode);
+        }
+        
+        public BasicMvcApp.PrismaWCF.ActionEntity[] GetAllWORequestActions() {
+            return base.Channel.GetAllWORequestActions();
+        }
+        
+        public System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.ActionEntity[]> GetAllWORequestActionsAsync() {
+            return base.Channel.GetAllWORequestActionsAsync();
         }
     }
 }

@@ -42,4 +42,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllWORequestActions">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllWORequestActionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" minOccurs="0" name="GetAllWORequestActionsResult" nillable="true" type="q4:ArrayOfActionEntity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

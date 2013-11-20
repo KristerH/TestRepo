@@ -29,5 +29,6 @@ namespace TwoToWin.Prisma.BasicWCFService.Datalayer
         public DbSet<BLfloor> BLfloor { get; set; }
         public DbSet<BLroom> BLroom { get; set; }
         public DbSet<WOrequest> WOrequest { get; set; }
+        public DbSet<WOaction> WOaction { get; set; }
     }
 }

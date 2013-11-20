@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TwoToWin.Prisma.BasicWCFService.Datalayer;
@@ -77,6 +78,23 @@ namespace TwoToWin.Prisma.BasicWCFService
             }
 
             return roomList;
+        }
+
+        public IEnumerable<ActionEntity> GetAllWORequestActions()
+        {
+            List<ActionEntity> actionList = new List<ActionEntity>();
+
+            IEnumerable<WOaction> wOActionsList = dbPrisma.WOaction.Where(x => x.wr.Equals("1"));
+
+            foreach (var woAction in wOActionsList)
+            {
+                ActionEntity actionEntity = new ActionEntity();
+                actionEntity.ActionCode = woAction.woaction_code;
+                actionEntity.Description = woAction.descr;
+                actionList.Add(actionEntity);
+            }
+
+            return actionList;
         }
     }
 }

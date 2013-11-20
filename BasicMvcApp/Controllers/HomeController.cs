@@ -1,4 +1,5 @@
-﻿using BasicMvcApp.Models;
+﻿using System.Reflection;
+using BasicMvcApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,21 +15,24 @@ namespace BasicMvcApp.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-
-            PrismaServiceClient client = new PrismaServiceClient();
-            var buildings = client.GetAllBuildings();
-            client.Close();
-            
             Anmalan anmalan = new Anmalan();
+            PrismaServiceClient client = new PrismaServiceClient();
+            var buildings = client.GetAllBuildings();           
             anmalan.BuildingList = new List<Building>(buildings);
 
             anmalan.FloorList = new List<Floor>();
             anmalan.RoomList = new List<Room>();
 
+            var actions = client.GetAllWORequestActions();
+            anmalan.ActionList = new List<ActionEntity>(actions);
+            client.Close();
+
+            anmalan.WRDescription = "";
+            
             return View(anmalan);
         }
 
-        // GET: //
+        // POST: //
         [HttpPost]
         public ActionResult Index(Anmalan incomingAnmalan)
         {
@@ -41,29 +45,54 @@ namespace BasicMvcApp.Controllers
             anmalan.SelectedBuildingCode = incomingAnmalan.SelectedBuildingCode;
 
             //Floor
-            if (anmalan.SelectedBuildingCode != null)
+            if (anmalan.SelectedBuildingCode == null)
+            {
+                anmalan.FloorList = new List<Floor>();
+            }
+            else
             {
                 var floors = client.GetFloors(anmalan.SelectedBuildingCode);
                 anmalan.FloorList = new List<Floor>(floors);
                 anmalan.SelectedFloorCode = incomingAnmalan.SelectedFloorCode;
             }
-            else
-            {
-                anmalan.FloorList = new List<Floor>();
-            }
 
-            if(anmalan.SelectedFloorCode != null)
-            {
-                var rooms = client.GetRooms(anmalan.SelectedBuildingCode, anmalan.SelectedFloorCode);
-                anmalan.RoomList = new List<Room>(rooms);
-            }
-            else
+            //Room
+            if(anmalan.SelectedFloorCode == null)
             {
                 anmalan.RoomList = new List<Room>();
             }
+            else
+            {
+                var rooms = client.GetRooms(anmalan.SelectedBuildingCode, anmalan.SelectedFloorCode);
+                anmalan.RoomList = new List<Room>(rooms);               
+            }
 
+            //ActionCode
+            var actions = client.GetAllWORequestActions();
+            if (anmalan.SelectedActionCode == null)
+            {
+                anmalan.ActionList = new List<ActionEntity>(actions);   
+            }
+            else
+            {
+                anmalan.ActionList = new List<ActionEntity>(actions);
+                anmalan.SelectedActionCode = incomingAnmalan.SelectedActionCode;
+            }
             client.Close();
+
+            anmalan.WRDescription = incomingAnmalan.WRDescription;
+
             return View(anmalan);
+        }
+
+        // POST: //
+        [HttpPost]
+        public ActionResult IndexSave(Anmalan incomingAnmalan)
+        {
+            //TODO get currentuser
+
+            //TODO validerafält och spara ner till WCF-tjänsten
+            return RedirectToAction("Index");
         }
     }
 }

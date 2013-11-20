@@ -93,6 +93,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PrismaModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Datalayer\WOaction.cs">
+      <DependentUpon>PrismaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Action.cs" />
     <Compile Include="Entities\Building.cs" />
     <Compile Include="Entities\Floor.cs" />
     <Compile Include="Entities\Room.cs" />

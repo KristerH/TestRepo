@@ -17,5 +17,8 @@ namespace TwoToWin.Prisma.BasicWCFService
 
         [OperationContract]
         IEnumerable<Room> GetRooms(string buildingCode, string floorCode);
+
+        [OperationContract]
+        IEnumerable<ActionEntity> GetAllWORequestActions();
     }
 }

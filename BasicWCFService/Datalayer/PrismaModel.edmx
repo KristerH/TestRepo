@@ -9,6 +9,7 @@
           <EntitySet Name="BLbuilding" EntityType="Prisma_FastighetModel.Store.BLbuilding" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="BLfloor" EntityType="Prisma_FastighetModel.Store.BLfloor" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="BLroom" EntityType="Prisma_FastighetModel.Store.BLroom" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WOaction" EntityType="Prisma_FastighetModel.Store.WOaction" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WOrequest" EntityType="Prisma_FastighetModel.Store.WOrequest" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_BL_floor_BL_building" Association="Prisma_FastighetModel.Store.FK_BL_floor_BL_building">
             <End Role="BLbuilding" EntitySet="BLbuilding" />
@@ -74,6 +75,25 @@
           <Property Name="blroomclstype_code" Type="varchar" MaxLength="8" />
           <Property Name="UpdateDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="WOaction">
+          <Key>
+            <PropertyRef Name="woaction_code" />
+          </Key>
+          <Property Name="woaction_code" Type="varchar" Nullable="false" MaxLength="12" />
+          <Property Name="descr" Type="varchar" MaxLength="40" />
+          <Property Name="type" Type="varchar" MaxLength="1" />
+          <Property Name="wo" Type="varchar" MaxLength="1" />
+          <Property Name="da" Type="varchar" MaxLength="1" />
+          <Property Name="pa" Type="varchar" MaxLength="1" />
+          <Property Name="wr" Type="varchar" MaxLength="1" />
+          <Property Name="sa" Type="varchar" MaxLength="1" />
+          <Property Name="unit" Type="varchar" MaxLength="8" />
+          <Property Name="hrs" Type="decimal" Precision="12" Scale="4" />
+          <Property Name="laborcost" Type="decimal" Precision="12" Scale="4" />
+          <Property Name="mtrlcost" Type="decimal" Precision="12" Scale="4" />
+          <Property Name="vendorcost" Type="decimal" Precision="12" Scale="4" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="WOrequest">
           <Key>
             <PropertyRef Name="worequest_code" />
@@ -136,6 +156,7 @@
             <End Role="BLfloor" EntitySet="BLfloor" />
             <End Role="BLroom" EntitySet="BLroom" />
           </AssociationSet>
+          <EntitySet Name="WOaction" EntityType="Prisma_FastighetModel.WOaction" />
         </EntityContainer>
         <EntityType Name="BLbuilding">
           <Key>
@@ -241,6 +262,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="WOaction">
+          <Key>
+            <PropertyRef Name="woaction_code" />
+          </Key>
+          <Property Type="String" Name="woaction_code" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="descr" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="type" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="wo" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="da" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="pa" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="wr" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="sa" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="unit" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="hrs" Precision="12" Scale="4" />
+          <Property Type="Decimal" Name="laborcost" Precision="12" Scale="4" />
+          <Property Type="Decimal" Name="mtrlcost" Precision="12" Scale="4" />
+          <Property Type="Decimal" Name="vendorcost" Precision="12" Scale="4" />
+          <Property Type="DateTime" Name="UpdateDate" Nullable="false" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -319,6 +359,26 @@
                 <ScalarProperty Name="partwo_code" ColumnName="partwo_code" />
                 <ScalarProperty Name="requestor" ColumnName="requestor" />
                 <ScalarProperty Name="reqphone" ColumnName="reqphone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WOaction">
+            <EntityTypeMapping TypeName="Prisma_FastighetModel.WOaction">
+              <MappingFragment StoreEntitySet="WOaction">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="vendorcost" ColumnName="vendorcost" />
+                <ScalarProperty Name="mtrlcost" ColumnName="mtrlcost" />
+                <ScalarProperty Name="laborcost" ColumnName="laborcost" />
+                <ScalarProperty Name="hrs" ColumnName="hrs" />
+                <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="sa" ColumnName="sa" />
+                <ScalarProperty Name="wr" ColumnName="wr" />
+                <ScalarProperty Name="pa" ColumnName="pa" />
+                <ScalarProperty Name="da" ColumnName="da" />
+                <ScalarProperty Name="wo" ColumnName="wo" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="descr" ColumnName="descr" />
+                <ScalarProperty Name="woaction_code" ColumnName="woaction_code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -40,4 +40,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Room" nillable="true" type="tns:Room" />
+  <xs:complexType name="ArrayOfActionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActionEntity" nillable="true" type="tns:ActionEntity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfActionEntity" nillable="true" type="tns:ArrayOfActionEntity" />
+  <xs:complexType name="ActionEntity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActionCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActionEntity" nillable="true" type="tns:ActionEntity" />
 </xs:schema>
