@@ -23,5 +23,7 @@ namespace BasicMvcApp.Models
         public string SelectedActionCode { get; set; }
 
         public string WRDescription { get; set; }
+
+        public bool SendRequest { get; set; }
     }
 }

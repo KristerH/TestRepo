@@ -22,13 +22,9 @@
             @Html.DropDownListFor(m => m.SelectedActionCode, new SelectList(Model.ActionList, "ActionCode", "Description" ), "Välj en åtgärd")
             <br/> 
             @Html.TextAreaFor(m => m.WRDescription)
+            <br/>
+            <button class="button" id="@Model.WRDescription" type="submit" name="submit" value="@Model.SendRequest=true" onclick="" >Submit</button>         
         </form>
-        <form action="/Home/IndexSave" method="post" enctype="multipart/form-data" name="form2" id="form2">        
-            <!-- TODO här ska ett descriptionfält in-->
-                
-            <!--TODO Lite mer saker att fylla i-->
-            <input type="submit" value="Skicka" />                                               
-        </form>            
     </div>
 </body>
 </html>

@@ -8,10 +8,10 @@
         <EntityTypeShape EntityType="Prisma_FastighetModel.BLbuilding" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Prisma_FastighetModel.BLfloor" Width="1.5" PointX="2.5" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Prisma_FastighetModel.BLroom" Width="1.5" PointX="4.375" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Prisma_FastighetModel.WOrequest" Width="1.5" PointX="6.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Prisma_FastighetModel.WOrequest" Width="1.5" PointX="8" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="Prisma_FastighetModel.FK_BL_floor_BL_building" ManuallyRouted="false" />
         <AssociationConnector Association="Prisma_FastighetModel.FK_BL_room_BL_floor" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Prisma_FastighetModel.WOaction" Width="1.5" PointX="8" PointY="0.5" />
+        <EntityTypeShape EntityType="Prisma_FastighetModel.WOaction" Width="1.5" PointX="6.125" PointY="0.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

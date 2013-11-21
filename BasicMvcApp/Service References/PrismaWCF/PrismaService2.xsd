@@ -54,4 +54,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="PutWorkRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" minOccurs="0" name="workRequest" nillable="true" type="q5:WorkRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PutWorkRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PutWorkRequestResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

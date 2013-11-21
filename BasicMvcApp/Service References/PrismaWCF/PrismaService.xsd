@@ -53,4 +53,15 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ActionEntity" nillable="true" type="tns:ActionEntity" />
+  <xs:complexType name="WorkRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BuildingCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FloorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoomCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WOActionCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WorkRequest" nillable="true" type="tns:WorkRequest" />
 </xs:schema>

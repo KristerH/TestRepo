@@ -96,5 +96,27 @@ namespace TwoToWin.Prisma.BasicWCFService
 
             return actionList;
         }
+
+
+        public bool PutWorkRequest(WorkRequest workRequest)
+        {
+            var woRequest = new WOrequest
+                {
+                    blbuilding_code = workRequest.BuildingCode,
+                    blfloor_code = workRequest.FloorCode,
+                    blroom_code = workRequest.RoomCode,
+                    createdby = workRequest.CreatedBy,
+                    createddate = DateTime.Now,
+                    descr = workRequest.Description,
+                    partwo_code = 1,
+                    status = "1",
+                    woaction_code = workRequest.WOActionCode
+                };
+
+            dbPrisma.WOrequest.Add(woRequest);
+            dbPrisma.SaveChanges();
+
+            return true;
+        }
     }
 }

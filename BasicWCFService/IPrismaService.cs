@@ -20,5 +20,8 @@ namespace TwoToWin.Prisma.BasicWCFService
 
         [OperationContract]
         IEnumerable<ActionEntity> GetAllWORequestActions();
+
+        [OperationContract]
+        bool PutWorkRequest(WorkRequest workRequest);
     }
 }

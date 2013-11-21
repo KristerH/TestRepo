@@ -89,9 +89,22 @@ namespace BasicMvcApp.Controllers
         [HttpPost]
         public ActionResult IndexSave(Anmalan incomingAnmalan)
         {
-            //TODO get currentuser
+            string user = Environment.UserName;
 
-            //TODO validerafält och spara ner till WCF-tjänsten
+            PrismaServiceClient client = new PrismaServiceClient();
+            WorkRequest workRequest = new WorkRequest
+                {
+                  BuildingCode = incomingAnmalan.SelectedBuildingCode,
+                  CreatedBy =  user,
+                  Description = incomingAnmalan.WRDescription,
+                  FloorCode = incomingAnmalan.SelectedFloorCode,
+                  RoomCode = incomingAnmalan.SelectedRoomCode,
+                  WOActionCode = incomingAnmalan.SelectedActionCode
+                };
+
+            client.PutWorkRequest(workRequest);
+            client.Close();
+
             return RedirectToAction("Index");
         }
     }
