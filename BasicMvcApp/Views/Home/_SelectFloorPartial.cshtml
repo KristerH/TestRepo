@@ -1,0 +1,7 @@
+﻿@model BasicMvcApp.Models.Anmalan
+@using (Html.BeginForm("SelectedFloorChanged", "Home"))
+{ 
+    @Html.HiddenFor( m => m.SelectedBuildingCode)
+    @Html.DropDownListFor(m => m.SelectedFloorCode, new SelectList(Model.FloorList, "FloorCode", "Description" ), "Välj en våning")
+    <input type="submit" value="Select" />
+}

@@ -127,6 +127,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
     <Content Include="Service References\PrismaWCF\BasicMvcApp.PrismaWCF.Building.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -164,6 +170,9 @@
     <None Include="Service References\PrismaWCF\PrismaService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Home\_BuildingPartial2.cshtml" />
+    <Content Include="Views\Home\_SelectFloorPartial.cshtml" />
+    <Content Include="Views\Home\_SelectRoomPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -196,7 +205,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>2582</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:53480/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

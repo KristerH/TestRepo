@@ -1,0 +1,8 @@
+﻿@model BasicMvcApp.Models.Anmalan
+@using (Html.BeginForm("SelectedBuildingChanged", "Home"))
+{ 
+
+    @Html.DropDownListFor(m => m.SelectedBuildingCode, new SelectList(Model.BuildingList, "BuildingCode", "Description" ), "Välj en byggnad")
+    <input type="submit" value="Select" />
+}
+

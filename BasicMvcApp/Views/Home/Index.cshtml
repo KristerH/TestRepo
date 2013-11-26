@@ -1,7 +1,4 @@
 ﻿@model BasicMvcApp.Models.Anmalan
-{
-    Layout = null;
-}
 
 <!DOCTYPE html>
 <h1>@ViewBag.Arne</h1>
@@ -9,22 +6,65 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title></title>
+    <script src="../../Scripts/MicrosoftAjax.js" type="text/javascript"></script>  
+    <script src="../../Scripts/MicrosoftMvcAjax.js" type="text/javascript"></script>
 </head>
 <body>
     <div>
-        <form action="/Home/Index" method="post" enctype="multipart/form-data" name="form1" id="form1">                
-            @Html.DropDownListFor(m => m.SelectedBuildingCode, new SelectList(Model.BuildingList, "BuildingCode", "Description" ), "Välj en byggnad", new { @onchange="forms(0).submit();" }))
+        @*        
+        @Html.Partial("~/Views/Home/_BuildingPartial2.cshtml")
+        <br/>            
+        @Html.Partial("~/Views/Home/_SelectFloorPartial.cshtml")
+        <br/>
+        @Html.Partial("~/Views/Home/_SelectRoomPartial.cshtml")
+        <br/>        
+        *@
+        
+        <div id="selectedbuilding">
+            @using (Ajax.BeginForm("SelectedBuildingChanged", new AjaxOptions { UpdateTargetId = "selectedbuilding" }))
+            {
+                @Html.DropDownListFor(m => m.SelectedBuildingCode, new SelectList(Model.BuildingList, "BuildingCode", "Description"), "Välj en byggnad", new {@onchange = "forms(0).submit();"})
+                <br/>
+            }
+        </div>
+
+        <div id="selectedfloor">
+            @using (Ajax.BeginForm("SelectedFloorChanged", new AjaxOptions { UpdateTargetId = "selectedfloor" }))
+            {
+                @Html.DropDownListFor(m => m.SelectedFloorCode, new SelectList(Model.FloorList, "FloorCode", "Description"), "Välj en våning", new {@onchange = "forms(1).submit();"})
+                <br/>
+            }
+        </div>
+        
+        <div id="selectedroom">
+            @using (Ajax.BeginForm("SelectedRoomChanged", new AjaxOptions { UpdateTargetId = "selectedroom" }))
+            {
+                @Html.DropDownListFor(m => m.SelectedRoomCode, new SelectList(Model.RoomList, "RoomCode", "Description"), "Välj ett rum",new {@onchange = "forms(2).submit();"})
+                <br/>
+            }
+        </div>
+
+        <div id="selectedaction">
+            @using (Ajax.BeginForm("SelectedActionChanged", new AjaxOptions { UpdateTargetId = "selectedaction" }))
+            {
+                @Html.DropDownListFor(m => m.SelectedActionCode, new SelectList(Model.ActionList, "ActionCode", "Description"), "Välj en åtgärd",new {@onchange = "forms(3).submit();"})
+                <br/>
+            }
+        </div>
+        
+        <div id="selecteddescription">
+            @using (Ajax.BeginForm("SelectedDescriptionChanged", new AjaxOptions { UpdateTargetId = "selecteddescription" }))
+            {
+                @Html.TextAreaFor(m => m.WRDescription,new {@onchange = "forms(4).submit();"})
+                <br/>
+            }
+        </div>
+
+        @using (Html.BeginForm("IndexSave", "Home"))
+        {                 
             <br/>
-            @Html.DropDownListFor(m => m.SelectedFloorCode, new SelectList(Model.FloorList, "FloorCode", "Description" ), "Välj en våning", new { @onchange="forms(0).submit();" }))
-            <br/>
-            @Html.DropDownListFor(m => m.SelectedRoomCode, new SelectList(Model.RoomList, "RoomCode", "Description" ), "Välj ett rum")                   
-            <br/>   
-            @Html.DropDownListFor(m => m.SelectedActionCode, new SelectList(Model.ActionList, "ActionCode", "Description" ), "Välj en åtgärd")
-            <br/> 
-            @Html.TextAreaFor(m => m.WRDescription)
-            <br/>
-            <button class="button" id="@Model.WRDescription" type="submit" name="submit" value="@Model.SendRequest=true" onclick="" >Submit</button>         
-        </form>
+            <input type="submit" value="Skicka" />
+        }
     </div>
 </body>
 </html>

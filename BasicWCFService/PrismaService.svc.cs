@@ -100,8 +100,11 @@ namespace TwoToWin.Prisma.BasicWCFService
 
         public bool PutWorkRequest(WorkRequest workRequest)
         {
+            var maxWOCode = dbPrisma.WOrequest.Max(x => x.worequest_code);
+
             var woRequest = new WOrequest
                 {
+                    worequest_code = maxWOCode + 1,
                     blbuilding_code = workRequest.BuildingCode,
                     blfloor_code = workRequest.FloorCode,
                     blroom_code = workRequest.RoomCode,
