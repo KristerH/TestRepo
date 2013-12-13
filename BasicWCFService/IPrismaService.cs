@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.ServiceModel;
 using TwoToWin.Prisma.BasicWCFService.Entities;
+using TwoToWin.Prisma.BasicWCFService.Entities.Message;
 
 namespace TwoToWin.Prisma.BasicWCFService
 {
     [ServiceContract]
     public interface IPrismaService
     {
-        // TODO: Add your service operations here
         [OperationContract]
-        IEnumerable<Building> GetAllBuildings();
+        ResponseMessageGetAllZones GetAllZones(RequestMessageGetAllZones request);
+
+        [OperationContract]
+        ResponseMessageGetBuildings GetBuildings(RequestMessageGetBuildings request);
 
         [OperationContract]
         IEnumerable<Floor> GetFloors(String buildingCode);
@@ -23,5 +26,8 @@ namespace TwoToWin.Prisma.BasicWCFService
 
         [OperationContract]
         bool PutWorkRequest(WorkRequest workRequest);
+
+        [OperationContract]
+        IEnumerable<WorkRequest> GetWorkRequest(string username);
     }
 }

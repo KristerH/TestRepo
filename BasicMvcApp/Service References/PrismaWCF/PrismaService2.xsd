@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:52504/PrismaService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" />
-  <xs:element name="GetAllBuildings">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllBuildingsResponse">
+  <xs:import schemaLocation="http://localhost:52504/PrismaService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities.Message" />
+  <xs:import schemaLocation="http://localhost:52504/PrismaService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService" />
+  <xs:import schemaLocation="http://localhost:52504/PrismaService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" />
+  <xs:element name="GetAllZones">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" minOccurs="0" name="GetAllBuildingsResult" nillable="true" type="q1:ArrayOfBuilding" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities.Message" minOccurs="0" name="request" nillable="true" type="q1:RequestMessageGetAllZones" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllZonesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities.Message" minOccurs="0" name="GetAllZonesResult" nillable="true" type="q2:ResponseMessageGetAllZones" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBuildings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService" minOccurs="0" name="request" nillable="true" type="q3:RequestMessageGetBuildings" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBuildingsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService" minOccurs="0" name="GetBuildingsResult" nillable="true" type="q4:ResponseMessageGetBuildings" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -23,7 +41,7 @@
   <xs:element name="GetFloorsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" minOccurs="0" name="GetFloorsResult" nillable="true" type="q2:ArrayOfFloor" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" minOccurs="0" name="GetFloorsResult" nillable="true" type="q5:ArrayOfFloor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -38,7 +56,7 @@
   <xs:element name="GetRoomsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" minOccurs="0" name="GetRoomsResult" nillable="true" type="q3:ArrayOfRoom" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" minOccurs="0" name="GetRoomsResult" nillable="true" type="q6:ArrayOfRoom" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -50,14 +68,14 @@
   <xs:element name="GetAllWORequestActionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" minOccurs="0" name="GetAllWORequestActionsResult" nillable="true" type="q4:ArrayOfActionEntity" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" minOccurs="0" name="GetAllWORequestActionsResult" nillable="true" type="q7:ArrayOfActionEntity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="PutWorkRequest">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" minOccurs="0" name="workRequest" nillable="true" type="q5:WorkRequest" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" minOccurs="0" name="workRequest" nillable="true" type="q8:WorkRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -65,6 +83,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="PutWorkRequestResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkRequestResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" minOccurs="0" name="GetWorkRequestResult" nillable="true" type="q9:ArrayOfWorkRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

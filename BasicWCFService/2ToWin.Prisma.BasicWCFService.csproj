@@ -78,6 +78,9 @@
     <Compile Include="Datalayer\BLroom.cs">
       <DependentUpon>PrismaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Datalayer\BLzone.cs">
+      <DependentUpon>PrismaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Datalayer\PrismaModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -96,11 +99,16 @@
     <Compile Include="Datalayer\WOaction.cs">
       <DependentUpon>PrismaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Action.cs" />
-    <Compile Include="Entities\Building.cs" />
-    <Compile Include="Entities\Floor.cs" />
-    <Compile Include="Entities\Room.cs" />
-    <Compile Include="Entities\WorkRequest.cs" />
+    <Compile Include="Entities\Message\EntityBase.cs" />
+    <Compile Include="Entities\WorkRequest\Action.cs" />
+    <Compile Include="Entities\WorkRequest\Building.cs" />
+    <Compile Include="Entities\WorkRequest\Floor.cs" />
+    <Compile Include="Entities\Message\Context.cs" />
+    <Compile Include="Entities\Message\IRequestMessage.cs" />
+    <Compile Include="Entities\Message\RequestMessageBase.cs" />
+    <Compile Include="Entities\WorkRequest\Room.cs" />
+    <Compile Include="Entities\WorkRequest\WorkRequest.cs" />
+    <Compile Include="Entities\WorkRequest\Zone.cs" />
     <Compile Include="PrismaService.svc.cs">
       <DependentUpon>PrismaService.svc</DependentUpon>
     </Compile>
@@ -109,9 +117,15 @@
     <Compile Include="Datalayer\WOrequest.cs">
       <DependentUpon>PrismaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Message\RequestMessageGetAllZones.cs" />
+    <Compile Include="Entities\Message\ResponseMessageGetAllZones.cs" />
+    <Compile Include="Entities\Message\RequestMessageGetBuildings.cs" />
+    <Compile Include="ResponseMessageGetBuildings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Businesslayer\" />
+    <Folder Include="Facadelayer\" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Datalayer\PrismaModel.edmx">

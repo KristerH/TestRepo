@@ -9,8 +9,13 @@
           <EntitySet Name="BLbuilding" EntityType="Prisma_FastighetModel.Store.BLbuilding" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="BLfloor" EntityType="Prisma_FastighetModel.Store.BLfloor" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="BLroom" EntityType="Prisma_FastighetModel.Store.BLroom" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="BLzone" EntityType="Prisma_FastighetModel.Store.BLzone" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WOaction" EntityType="Prisma_FastighetModel.Store.WOaction" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="WOrequest" EntityType="Prisma_FastighetModel.Store.WOrequest" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_BL_building_BL_zone" Association="Prisma_FastighetModel.Store.FK_BL_building_BL_zone">
+            <End Role="BLzone" EntitySet="BLzone" />
+            <End Role="BLbuilding" EntitySet="BLbuilding" />
+          </AssociationSet>
           <AssociationSet Name="FK_BL_floor_BL_building" Association="Prisma_FastighetModel.Store.FK_BL_floor_BL_building">
             <End Role="BLbuilding" EntitySet="BLbuilding" />
             <End Role="BLfloor" EntitySet="BLfloor" />
@@ -75,6 +80,14 @@
           <Property Name="blroomclstype_code" Type="varchar" MaxLength="8" />
           <Property Name="UpdateDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="BLzone">
+          <Key>
+            <PropertyRef Name="blzone_code" />
+          </Key>
+          <Property Name="blzone_code" Type="varchar" Nullable="false" MaxLength="8" />
+          <Property Name="descr" Type="varchar" MaxLength="30" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="WOaction">
           <Key>
             <PropertyRef Name="woaction_code" />
@@ -113,6 +126,18 @@
           <Property Name="requestor" Type="varchar" MaxLength="30" />
           <Property Name="reqphone" Type="varchar" MaxLength="15" />
         </EntityType>
+        <Association Name="FK_BL_building_BL_zone">
+          <End Role="BLzone" Type="Prisma_FastighetModel.Store.BLzone" Multiplicity="0..1" />
+          <End Role="BLbuilding" Type="Prisma_FastighetModel.Store.BLbuilding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BLzone">
+              <PropertyRef Name="blzone_code" />
+            </Principal>
+            <Dependent Role="BLbuilding">
+              <PropertyRef Name="blzone_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_BL_floor_BL_building">
           <End Role="BLbuilding" Type="Prisma_FastighetModel.Store.BLbuilding" Multiplicity="1" />
           <End Role="BLfloor" Type="Prisma_FastighetModel.Store.BLfloor" Multiplicity="*" />
@@ -157,6 +182,11 @@
             <End Role="BLroom" EntitySet="BLroom" />
           </AssociationSet>
           <EntitySet Name="WOaction" EntityType="Prisma_FastighetModel.WOaction" />
+          <EntitySet Name="BLzone" EntityType="Prisma_FastighetModel.BLzone" />
+          <AssociationSet Name="FK_BL_building_BL_zone" Association="Prisma_FastighetModel.FK_BL_building_BL_zone">
+            <End Role="BLzone" EntitySet="BLzone" />
+            <End Role="BLbuilding" EntitySet="BLbuilding" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="BLbuilding">
           <Key>
@@ -187,6 +217,7 @@
           <Property Name="tablerecnum" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="inactive" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="BLfloor" Relationship="Prisma_FastighetModel.FK_BL_floor_BL_building" FromRole="BLbuilding" ToRole="BLfloor" />
+          <NavigationProperty Name="BLzone" Relationship="Prisma_FastighetModel.FK_BL_building_BL_zone" FromRole="BLbuilding" ToRole="BLzone" />
         </EntityType>
         <EntityType Name="BLfloor">
           <Key>
@@ -281,6 +312,27 @@
           <Property Type="Decimal" Name="vendorcost" Precision="12" Scale="4" />
           <Property Type="DateTime" Name="UpdateDate" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="BLzone">
+          <Key>
+            <PropertyRef Name="blzone_code" />
+          </Key>
+          <Property Type="String" Name="blzone_code" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="descr" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="UpdateDate" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BLbuilding" Relationship="Prisma_FastighetModel.FK_BL_building_BL_zone" FromRole="BLzone" ToRole="BLbuilding" />
+        </EntityType>
+        <Association Name="FK_BL_building_BL_zone">
+          <End Type="Prisma_FastighetModel.BLzone" Role="BLzone" Multiplicity="0..1" />
+          <End Type="Prisma_FastighetModel.BLbuilding" Role="BLbuilding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BLzone">
+              <PropertyRef Name="blzone_code" />
+            </Principal>
+            <Dependent Role="BLbuilding">
+              <PropertyRef Name="blzone_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -379,6 +431,15 @@
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="descr" ColumnName="descr" />
                 <ScalarProperty Name="woaction_code" ColumnName="woaction_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BLzone">
+            <EntityTypeMapping TypeName="Prisma_FastighetModel.BLzone">
+              <MappingFragment StoreEntitySet="BLzone">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="descr" ColumnName="descr" />
+                <ScalarProperty Name="blzone_code" ColumnName="blzone_code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

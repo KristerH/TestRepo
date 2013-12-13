@@ -15,6 +15,486 @@ namespace BasicMvcApp.PrismaWCF {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RequestMessageBase", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities." +
+        "Message")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicMvcApp.PrismaWCF.RequestMessageGetBuildings))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicMvcApp.PrismaWCF.RequestMessageGetAllZones))]
+    public partial class RequestMessageBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicMvcApp.PrismaWCF.RequestMessageBase.ChannelType ChannelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicMvcApp.PrismaWCF.Context ContextField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicMvcApp.PrismaWCF.RequestMessageBase.Environment EnvironmentIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProgramNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ServerNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime TimeStampField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TransactionIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string VersionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicMvcApp.PrismaWCF.RequestMessageBase.ChannelType Channel {
+            get {
+                return this.ChannelField;
+            }
+            set {
+                if ((this.ChannelField.Equals(value) != true)) {
+                    this.ChannelField = value;
+                    this.RaisePropertyChanged("Channel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicMvcApp.PrismaWCF.Context Context {
+            get {
+                return this.ContextField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContextField, value) != true)) {
+                    this.ContextField = value;
+                    this.RaisePropertyChanged("Context");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicMvcApp.PrismaWCF.RequestMessageBase.Environment EnvironmentId {
+            get {
+                return this.EnvironmentIdField;
+            }
+            set {
+                if ((this.EnvironmentIdField.Equals(value) != true)) {
+                    this.EnvironmentIdField = value;
+                    this.RaisePropertyChanged("EnvironmentId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MessageId {
+            get {
+                return this.MessageIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageIdField, value) != true)) {
+                    this.MessageIdField = value;
+                    this.RaisePropertyChanged("MessageId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProgramName {
+            get {
+                return this.ProgramNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProgramNameField, value) != true)) {
+                    this.ProgramNameField = value;
+                    this.RaisePropertyChanged("ProgramName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ServerName {
+            get {
+                return this.ServerNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ServerNameField, value) != true)) {
+                    this.ServerNameField = value;
+                    this.RaisePropertyChanged("ServerName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemCode {
+            get {
+                return this.SystemCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemCodeField, value) != true)) {
+                    this.SystemCodeField = value;
+                    this.RaisePropertyChanged("SystemCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime TimeStamp {
+            get {
+                return this.TimeStampField;
+            }
+            set {
+                if ((this.TimeStampField.Equals(value) != true)) {
+                    this.TimeStampField = value;
+                    this.RaisePropertyChanged("TimeStamp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TransactionId {
+            get {
+                return this.TransactionIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TransactionIdField, value) != true)) {
+                    this.TransactionIdField = value;
+                    this.RaisePropertyChanged("TransactionId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Version {
+            get {
+                return this.VersionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VersionField, value) != true)) {
+                    this.VersionField = value;
+                    this.RaisePropertyChanged("Version");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="RequestMessageBase.ChannelType", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities." +
+            "Message")]
+        public enum ChannelType : int {
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            NotSet = 0,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Intranet = 10,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Internet = 20,
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="RequestMessageBase.Environment", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities." +
+            "Message")]
+        public enum Environment : int {
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            NotSet = 0,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            PT = 10,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            ST = 20,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            SST = 30,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            AT = 40,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            PROD = 20,
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Context", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities." +
+        "Message")]
+    [System.SerializableAttribute()]
+    public partial class Context : BasicMvcApp.PrismaWCF.EntityBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContextIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RequestTransactionIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ContextID {
+            get {
+                return this.ContextIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContextIDField, value) != true)) {
+                    this.ContextIDField = value;
+                    this.RaisePropertyChanged("ContextID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RequestTransactionID {
+            get {
+                return this.RequestTransactionIDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RequestTransactionIDField, value) != true)) {
+                    this.RequestTransactionIDField = value;
+                    this.RaisePropertyChanged("RequestTransactionID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RequestMessageGetBuildings", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService")]
+    [System.SerializableAttribute()]
+    public partial class RequestMessageGetBuildings : BasicMvcApp.PrismaWCF.RequestMessageBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ZoneCodeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ZoneCode {
+            get {
+                return this.ZoneCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ZoneCodeField, value) != true)) {
+                    this.ZoneCodeField = value;
+                    this.RaisePropertyChanged("ZoneCode");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RequestMessageGetAllZones", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities." +
+        "Message")]
+    [System.SerializableAttribute()]
+    public partial class RequestMessageGetAllZones : BasicMvcApp.PrismaWCF.RequestMessageBase {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EntityBase", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities." +
+        "Message")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicMvcApp.PrismaWCF.Zone))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicMvcApp.PrismaWCF.Context))]
+    public partial class EntityBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Zone", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities")]
+    [System.SerializableAttribute()]
+    public partial class Zone : BasicMvcApp.PrismaWCF.EntityBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ZoneCodeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ZoneCode {
+            get {
+                return this.ZoneCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ZoneCodeField, value) != true)) {
+                    this.ZoneCodeField = value;
+                    this.RaisePropertyChanged("ZoneCode");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResponseMessageGetAllZones", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities." +
+        "Message")]
+    [System.SerializableAttribute()]
+    public partial class ResponseMessageGetAllZones : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicMvcApp.PrismaWCF.Zone[] ZonesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicMvcApp.PrismaWCF.Zone[] Zones {
+            get {
+                return this.ZonesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ZonesField, value) != true)) {
+                    this.ZonesField = value;
+                    this.RaisePropertyChanged("Zones");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResponseMessageGetBuildings", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService")]
+    [System.SerializableAttribute()]
+    public partial class ResponseMessageGetBuildings : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicMvcApp.PrismaWCF.Building[] BuildingListField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicMvcApp.PrismaWCF.Building[] BuildingList {
+            get {
+                return this.BuildingListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BuildingListField, value) != true)) {
+                    this.BuildingListField = value;
+                    this.RaisePropertyChanged("BuildingList");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Building", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities")]
     [System.SerializableAttribute()]
     public partial class Building : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -298,6 +778,9 @@ namespace BasicMvcApp.PrismaWCF {
         private string RoomCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TelephoneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string WOActionCodeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -376,6 +859,19 @@ namespace BasicMvcApp.PrismaWCF {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Telephone {
+            get {
+                return this.TelephoneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TelephoneField, value) != true)) {
+                    this.TelephoneField = value;
+                    this.RaisePropertyChanged("Telephone");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string WOActionCode {
             get {
                 return this.WOActionCodeField;
@@ -402,11 +898,17 @@ namespace BasicMvcApp.PrismaWCF {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PrismaWCF.IPrismaService")]
     public interface IPrismaService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetAllBuildings", ReplyAction="http://tempuri.org/IPrismaService/GetAllBuildingsResponse")]
-        BasicMvcApp.PrismaWCF.Building[] GetAllBuildings();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetAllZones", ReplyAction="http://tempuri.org/IPrismaService/GetAllZonesResponse")]
+        BasicMvcApp.PrismaWCF.ResponseMessageGetAllZones GetAllZones(BasicMvcApp.PrismaWCF.RequestMessageGetAllZones request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetAllBuildings", ReplyAction="http://tempuri.org/IPrismaService/GetAllBuildingsResponse")]
-        System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.Building[]> GetAllBuildingsAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetAllZones", ReplyAction="http://tempuri.org/IPrismaService/GetAllZonesResponse")]
+        System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.ResponseMessageGetAllZones> GetAllZonesAsync(BasicMvcApp.PrismaWCF.RequestMessageGetAllZones request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetBuildings", ReplyAction="http://tempuri.org/IPrismaService/GetBuildingsResponse")]
+        BasicMvcApp.PrismaWCF.ResponseMessageGetBuildings GetBuildings(BasicMvcApp.PrismaWCF.RequestMessageGetBuildings request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetBuildings", ReplyAction="http://tempuri.org/IPrismaService/GetBuildingsResponse")]
+        System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.ResponseMessageGetBuildings> GetBuildingsAsync(BasicMvcApp.PrismaWCF.RequestMessageGetBuildings request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetFloors", ReplyAction="http://tempuri.org/IPrismaService/GetFloorsResponse")]
         BasicMvcApp.PrismaWCF.Floor[] GetFloors(string buildingCode);
@@ -431,6 +933,12 @@ namespace BasicMvcApp.PrismaWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/PutWorkRequest", ReplyAction="http://tempuri.org/IPrismaService/PutWorkRequestResponse")]
         System.Threading.Tasks.Task<bool> PutWorkRequestAsync(BasicMvcApp.PrismaWCF.WorkRequest workRequest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetWorkRequest", ReplyAction="http://tempuri.org/IPrismaService/GetWorkRequestResponse")]
+        BasicMvcApp.PrismaWCF.WorkRequest[] GetWorkRequest(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetWorkRequest", ReplyAction="http://tempuri.org/IPrismaService/GetWorkRequestResponse")]
+        System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.WorkRequest[]> GetWorkRequestAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -460,12 +968,20 @@ namespace BasicMvcApp.PrismaWCF {
                 base(binding, remoteAddress) {
         }
         
-        public BasicMvcApp.PrismaWCF.Building[] GetAllBuildings() {
-            return base.Channel.GetAllBuildings();
+        public BasicMvcApp.PrismaWCF.ResponseMessageGetAllZones GetAllZones(BasicMvcApp.PrismaWCF.RequestMessageGetAllZones request) {
+            return base.Channel.GetAllZones(request);
         }
         
-        public System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.Building[]> GetAllBuildingsAsync() {
-            return base.Channel.GetAllBuildingsAsync();
+        public System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.ResponseMessageGetAllZones> GetAllZonesAsync(BasicMvcApp.PrismaWCF.RequestMessageGetAllZones request) {
+            return base.Channel.GetAllZonesAsync(request);
+        }
+        
+        public BasicMvcApp.PrismaWCF.ResponseMessageGetBuildings GetBuildings(BasicMvcApp.PrismaWCF.RequestMessageGetBuildings request) {
+            return base.Channel.GetBuildings(request);
+        }
+        
+        public System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.ResponseMessageGetBuildings> GetBuildingsAsync(BasicMvcApp.PrismaWCF.RequestMessageGetBuildings request) {
+            return base.Channel.GetBuildingsAsync(request);
         }
         
         public BasicMvcApp.PrismaWCF.Floor[] GetFloors(string buildingCode) {
@@ -498,6 +1014,14 @@ namespace BasicMvcApp.PrismaWCF {
         
         public System.Threading.Tasks.Task<bool> PutWorkRequestAsync(BasicMvcApp.PrismaWCF.WorkRequest workRequest) {
             return base.Channel.PutWorkRequestAsync(workRequest);
+        }
+        
+        public BasicMvcApp.PrismaWCF.WorkRequest[] GetWorkRequest(string username) {
+            return base.Channel.GetWorkRequest(username);
+        }
+        
+        public System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.WorkRequest[]> GetWorkRequestAsync(string username) {
+            return base.Channel.GetWorkRequestAsync(username);
         }
     }
 }

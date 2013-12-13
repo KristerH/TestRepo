@@ -30,5 +30,6 @@ namespace TwoToWin.Prisma.BasicWCFService.Datalayer
         public DbSet<BLroom> BLroom { get; set; }
         public DbSet<WOrequest> WOrequest { get; set; }
         public DbSet<WOaction> WOaction { get; set; }
+        public DbSet<BLzone> BLzone { get; set; }
     }
 }

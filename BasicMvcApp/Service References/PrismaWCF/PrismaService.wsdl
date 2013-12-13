@@ -4,14 +4,22 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:52504/PrismaService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:52504/PrismaService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:52504/PrismaService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" />
+      <xsd:import schemaLocation="http://localhost:52504/PrismaService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities.Message" />
+      <xsd:import schemaLocation="http://localhost:52504/PrismaService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" />
+      <xsd:import schemaLocation="http://localhost:52504/PrismaService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IPrismaService_GetAllBuildings_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllBuildings" />
+  <wsdl:message name="IPrismaService_GetAllZones_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllZones" />
   </wsdl:message>
-  <wsdl:message name="IPrismaService_GetAllBuildings_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllBuildingsResponse" />
+  <wsdl:message name="IPrismaService_GetAllZones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllZonesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPrismaService_GetBuildings_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBuildings" />
+  </wsdl:message>
+  <wsdl:message name="IPrismaService_GetBuildings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBuildingsResponse" />
   </wsdl:message>
   <wsdl:message name="IPrismaService_GetFloors_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFloors" />
@@ -37,10 +45,20 @@
   <wsdl:message name="IPrismaService_PutWorkRequest_OutputMessage">
     <wsdl:part name="parameters" element="tns:PutWorkRequestResponse" />
   </wsdl:message>
+  <wsdl:message name="IPrismaService_GetWorkRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkRequest" />
+  </wsdl:message>
+  <wsdl:message name="IPrismaService_GetWorkRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkRequestResponse" />
+  </wsdl:message>
   <wsdl:portType name="IPrismaService">
-    <wsdl:operation name="GetAllBuildings">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPrismaService/GetAllBuildings" message="tns:IPrismaService_GetAllBuildings_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPrismaService/GetAllBuildingsResponse" message="tns:IPrismaService_GetAllBuildings_OutputMessage" />
+    <wsdl:operation name="GetAllZones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPrismaService/GetAllZones" message="tns:IPrismaService_GetAllZones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPrismaService/GetAllZonesResponse" message="tns:IPrismaService_GetAllZones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildings">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPrismaService/GetBuildings" message="tns:IPrismaService_GetBuildings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPrismaService/GetBuildingsResponse" message="tns:IPrismaService_GetBuildings_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetFloors">
       <wsdl:input wsaw:Action="http://tempuri.org/IPrismaService/GetFloors" message="tns:IPrismaService_GetFloors_InputMessage" />
@@ -58,11 +76,24 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPrismaService/PutWorkRequest" message="tns:IPrismaService_PutWorkRequest_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPrismaService/PutWorkRequestResponse" message="tns:IPrismaService_PutWorkRequest_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetWorkRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPrismaService/GetWorkRequest" message="tns:IPrismaService_GetWorkRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPrismaService/GetWorkRequestResponse" message="tns:IPrismaService_GetWorkRequest_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IPrismaService" type="tns:IPrismaService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetAllBuildings">
-      <soap:operation soapAction="http://tempuri.org/IPrismaService/GetAllBuildings" style="document" />
+    <wsdl:operation name="GetAllZones">
+      <soap:operation soapAction="http://tempuri.org/IPrismaService/GetAllZones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBuildings">
+      <soap:operation soapAction="http://tempuri.org/IPrismaService/GetBuildings" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -99,6 +130,15 @@
     </wsdl:operation>
     <wsdl:operation name="PutWorkRequest">
       <soap:operation soapAction="http://tempuri.org/IPrismaService/PutWorkRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkRequest">
+      <soap:operation soapAction="http://tempuri.org/IPrismaService/GetWorkRequest" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

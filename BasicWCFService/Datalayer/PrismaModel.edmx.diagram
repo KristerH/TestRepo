@@ -4,14 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="922560ae9db7421f819355ad7647ec51" Name="Diagram1" ZoomLevel="87">
-        <EntityTypeShape EntityType="Prisma_FastighetModel.BLbuilding" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Prisma_FastighetModel.BLfloor" Width="1.5" PointX="2.5" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Prisma_FastighetModel.BLroom" Width="1.5" PointX="4.375" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Prisma_FastighetModel.WOrequest" Width="1.5" PointX="8" PointY="0.5" IsExpanded="true" />
+      <Diagram DiagramId="922560ae9db7421f819355ad7647ec51" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="Prisma_FastighetModel.BLbuilding" Width="1.5" PointX="2.375" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Prisma_FastighetModel.BLfloor" Width="1.5" PointX="4.125" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Prisma_FastighetModel.BLroom" Width="1.5" PointX="6" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Prisma_FastighetModel.WOrequest" Width="1.5" PointX="9.625" PointY="0.625" IsExpanded="true" />
         <AssociationConnector Association="Prisma_FastighetModel.FK_BL_floor_BL_building" ManuallyRouted="false" />
         <AssociationConnector Association="Prisma_FastighetModel.FK_BL_room_BL_floor" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Prisma_FastighetModel.WOaction" Width="1.5" PointX="6.125" PointY="0.5" />
+        <EntityTypeShape EntityType="Prisma_FastighetModel.WOaction" Width="1.5" PointX="7.75" PointY="0.625" />
+        <EntityTypeShape EntityType="Prisma_FastighetModel.BLzone" Width="1.5" PointX="0.5" PointY="0.625" />
+        <AssociationConnector Association="Prisma_FastighetModel.FK_BL_building_BL_zone" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

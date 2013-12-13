@@ -1,67 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfBuilding">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities.Message" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities.Message" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52504/PrismaService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:52504/PrismaService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" />
+  <xs:complexType name="RequestMessageGetAllZones">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessageBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RequestMessageGetAllZones" nillable="true" type="tns:RequestMessageGetAllZones" />
+  <xs:complexType name="RequestMessageBase">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Building" nillable="true" type="tns:Building" />
+      <xs:element minOccurs="0" name="Channel" type="tns:RequestMessageBase.ChannelType" />
+      <xs:element minOccurs="0" name="Context" nillable="true" type="tns:Context" />
+      <xs:element minOccurs="0" name="EnvironmentId" type="tns:RequestMessageBase.Environment" />
+      <xs:element minOccurs="0" name="MessageId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProgramName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeStamp" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TransactionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfBuilding" nillable="true" type="tns:ArrayOfBuilding" />
-  <xs:complexType name="Building">
+  <xs:element name="RequestMessageBase" nillable="true" type="tns:RequestMessageBase" />
+  <xs:simpleType name="RequestMessageBase.ChannelType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotSet" />
+      <xs:enumeration value="Intranet">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Internet">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">20</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RequestMessageBase.ChannelType" nillable="true" type="tns:RequestMessageBase.ChannelType" />
+  <xs:complexType name="Context">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:EntityBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ContextID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RequestTransactionID" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Context" nillable="true" type="tns:Context" />
+  <xs:complexType name="EntityBase">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="EntityBase" nillable="true" type="tns:EntityBase" />
+  <xs:simpleType name="RequestMessageBase.Environment">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotSet" />
+      <xs:enumeration value="PT">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ST">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">20</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SST">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">30</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AT">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">40</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PROD">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">20</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RequestMessageBase.Environment" nillable="true" type="tns:RequestMessageBase.Environment" />
+  <xs:complexType name="ResponseMessageGetAllZones">
     <xs:sequence>
-      <xs:element minOccurs="0" name="BuildingCode" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" minOccurs="0" name="Zones" nillable="true" type="q1:ArrayOfZone" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Building" nillable="true" type="tns:Building" />
-  <xs:complexType name="ArrayOfFloor">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Floor" nillable="true" type="tns:Floor" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfFloor" nillable="true" type="tns:ArrayOfFloor" />
-  <xs:complexType name="Floor">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BuildingCode" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FloorCode" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Floor" nillable="true" type="tns:Floor" />
-  <xs:complexType name="ArrayOfRoom">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Room" nillable="true" type="tns:Room" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfRoom" nillable="true" type="tns:ArrayOfRoom" />
-  <xs:complexType name="Room">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RoomCode" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Room" nillable="true" type="tns:Room" />
-  <xs:complexType name="ArrayOfActionEntity">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActionEntity" nillable="true" type="tns:ActionEntity" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfActionEntity" nillable="true" type="tns:ArrayOfActionEntity" />
-  <xs:complexType name="ActionEntity">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ActionCode" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ActionEntity" nillable="true" type="tns:ActionEntity" />
-  <xs:complexType name="WorkRequest">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BuildingCode" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FloorCode" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RoomCode" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="WOActionCode" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="WorkRequest" nillable="true" type="tns:WorkRequest" />
+  <xs:element name="ResponseMessageGetAllZones" nillable="true" type="tns:ResponseMessageGetAllZones" />
 </xs:schema>

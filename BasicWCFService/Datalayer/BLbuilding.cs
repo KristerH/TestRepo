@@ -45,5 +45,6 @@ namespace TwoToWin.Prisma.BasicWCFService.Datalayer
         public string inactive { get; set; }
     
         public virtual ICollection<BLfloor> BLfloor { get; set; }
+        public virtual BLzone BLzone { get; set; }
     }
 }

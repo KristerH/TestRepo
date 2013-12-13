@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TwoToWin.Prisma.BasicWCFService.Datalayer;
 using TwoToWin.Prisma.BasicWCFService.Entities;
+using TwoToWin.Prisma.BasicWCFService.Entities.Message;
 
 namespace TwoToWin.Prisma.BasicWCFService
 {
@@ -16,24 +17,46 @@ namespace TwoToWin.Prisma.BasicWCFService
             dbPrisma = new Prisma_FastighetEntities();
         }
 
-        public IEnumerable<Building> GetAllBuildings()
+        public ResponseMessageGetAllZones GetAllZones(RequestMessageGetAllZones request)
         {
-            List<Building> EntitiesBuildingList = new List<Building>();
+            //TODO Validate request
 
-            var EFBuildingList = dbPrisma.BLbuilding.ToList();
+            ResponseMessageGetAllZones response = new ResponseMessageGetAllZones();
+            response.Zones = new List<Zone>();
 
-            foreach (var EFbuilding in EFBuildingList)
+            foreach (var item in dbPrisma.BLzone.ToList())
+            {
+                Zone zone = new Zone();
+                zone.Description = item.descr;
+                zone.ZoneCode = item.blzone_code;
+
+                response.Zones.Add(zone);
+            }
+
+            return response;
+        }
+
+        public ResponseMessageGetBuildings GetBuildings(RequestMessageGetBuildings request)
+        {
+            //TODO Validate request
+
+            ResponseMessageGetBuildings response = new ResponseMessageGetBuildings();
+            response.BuildingList = new List<Building>();
+
+            var EFBuildingList = dbPrisma.BLbuilding.Where(x => x.blzone_code.Equals(request.ZoneCode)).ToList();
+
+            foreach (var item in EFBuildingList)
             {
                 Building building = new Building
                 {
-                    BuildingCode = EFbuilding.blbuilding_code,
-                    Description = EFbuilding.descr
+                    BuildingCode = item.blbuilding_code,
+                    Description = item.descr
                 };
 
-                EntitiesBuildingList.Add(building);
+                response.BuildingList.Add(building);
             }
 
-            return EntitiesBuildingList;
+            return response;
         }
 
         public IEnumerable<Floor> GetFloors(string buildingCode)
@@ -102,6 +125,7 @@ namespace TwoToWin.Prisma.BasicWCFService
         {
             var maxWOCode = dbPrisma.WOrequest.Max(x => x.worequest_code);
 
+            //TODO: Entitytranslator
             var woRequest = new WOrequest
                 {
                     worequest_code = maxWOCode + 1,
@@ -113,13 +137,36 @@ namespace TwoToWin.Prisma.BasicWCFService
                     descr = workRequest.Description,
                     partwo_code = 1,
                     status = "1",
-                    woaction_code = workRequest.WOActionCode
+                    woaction_code = workRequest.WOActionCode,
+                    reqphone = workRequest.Telephone
                 };
 
             dbPrisma.WOrequest.Add(woRequest);
             dbPrisma.SaveChanges();
 
             return true;
+        }
+
+        public IEnumerable<WorkRequest> GetWorkRequest(string username)
+        {
+            List<WorkRequest> workRequestList = new List<WorkRequest>();
+
+            IEnumerable<WOrequest> woRequestList = dbPrisma.WOrequest.Where(x => x.createdby.Equals(username));
+            //TODO: Entitytranslator
+            foreach (var req in woRequestList)
+            {
+                WorkRequest workRequest = new WorkRequest();
+                workRequest.BuildingCode = req.blbuilding_code;
+                workRequest.CreatedBy = req.createdby;
+                workRequest.Description = req.descr;
+                workRequest.FloorCode = req.blfloor_code;
+                workRequest.RoomCode = req.blroom_code;
+                workRequest.WOActionCode = req.woaction_code;
+
+                workRequestList.Add(workRequest);
+            }
+
+            return workRequestList;
         }
     }
 }

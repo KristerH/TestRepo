@@ -15,13 +15,17 @@ namespace BasicMvcApp.Controllers
         [HttpGet]
         public virtual ActionResult Index()
         {
-            Anmalan anmalan = TempData["anmalan"] as Anmalan;
+            AnmalanModel anmalan = TempData["anmalan"] as AnmalanModel;
             if (anmalan == null)
             {
-                anmalan = new Anmalan();
+                anmalan = new AnmalanModel();
                 PrismaServiceClient client = new PrismaServiceClient();
-                var buildings = client.GetAllBuildings();
-                anmalan.BuildingList = new List<Building>(buildings);
+
+                var request = new RequestMessageGetAllZones();
+                var response = client.GetAllZones(request);
+                anmalan.ZoneList = new List<Zone>(response.Zones);
+
+                anmalan.BuildingList = new List<Building>();
 
                 anmalan.FloorList = new List<Floor>();
                 anmalan.RoomList = new List<Room>();
@@ -91,9 +95,44 @@ namespace BasicMvcApp.Controllers
         //}
 
         [HttpPost]
-        public ActionResult SelectedBuildingChanged(Anmalan incomingAnmalan)
+        public ActionResult SelectedZoneChanged(AnmalanModel incomingAnmalan)
         {
-            Anmalan anmalan = TempData["anmalan"] as Anmalan;
+            AnmalanModel anmalan = TempData["anmalan"] as AnmalanModel;
+
+            if (incomingAnmalan.SelectedZoneCode == null)
+            {
+                anmalan.BuildingList = new List<Building>();
+                anmalan.SelectedBuildingCode = null;
+            }
+            else
+            {
+                anmalan.SelectedZoneCode = incomingAnmalan.SelectedZoneCode;
+
+                PrismaServiceClient client = new PrismaServiceClient();
+
+                var request = new RequestMessageGetBuildings();
+                request.ZoneCode = anmalan.SelectedZoneCode;
+
+                var response = client.GetBuildings(request);
+
+                anmalan.BuildingList = response.BuildingList;
+                client.Close();
+            }
+
+            anmalan.FloorList = new List<Floor>();
+            anmalan.SelectedFloorCode = null;
+
+            anmalan.RoomList = new List<Room>();
+            anmalan.SelectedRoomCode = null;
+
+            TempData["anmalan"] = anmalan;
+            return View("Index", anmalan);
+        }
+
+        [HttpPost]
+        public ActionResult SelectedBuildingChanged(AnmalanModel incomingAnmalan)
+        {
+            AnmalanModel anmalan = TempData["anmalan"] as AnmalanModel;
 
             if (incomingAnmalan.SelectedBuildingCode == null)
             {
@@ -128,9 +167,9 @@ namespace BasicMvcApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult SelectedFloorChanged(Anmalan incomingAnmalan)
+        public ActionResult SelectedFloorChanged(AnmalanModel incomingAnmalan)
         {
-            Anmalan anmalan = TempData["anmalan"] as Anmalan;
+            AnmalanModel anmalan = TempData["anmalan"] as AnmalanModel;
             anmalan.SelectedFloorCode = incomingAnmalan.SelectedFloorCode;
             
             //Floor
@@ -162,9 +201,9 @@ namespace BasicMvcApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult SelectedRoomChanged(Anmalan incomingAnmalan)
+        public ActionResult SelectedRoomChanged(AnmalanModel incomingAnmalan)
         {
-            Anmalan anmalan = TempData["anmalan"] as Anmalan;
+            AnmalanModel anmalan = TempData["anmalan"] as AnmalanModel;
 
             anmalan.SelectedRoomCode = incomingAnmalan.SelectedRoomCode;
 
@@ -173,9 +212,9 @@ namespace BasicMvcApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult SelectedActionChanged(Anmalan incomingAnmalan)
+        public ActionResult SelectedActionChanged(AnmalanModel incomingAnmalan)
         {
-            Anmalan anmalan = TempData["anmalan"] as Anmalan;
+            AnmalanModel anmalan = TempData["anmalan"] as AnmalanModel;
 
             anmalan.SelectedActionCode = incomingAnmalan.SelectedActionCode;
 
@@ -184,9 +223,9 @@ namespace BasicMvcApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult SelectedDescriptionChanged(Anmalan incomingAnmalan)
+        public ActionResult DescriptionChanged(AnmalanModel incomingAnmalan)
         {
-            Anmalan anmalan = TempData["anmalan"] as Anmalan;
+            AnmalanModel anmalan = TempData["anmalan"] as AnmalanModel;
 
             anmalan.WRDescription = incomingAnmalan.WRDescription;
 
@@ -194,11 +233,21 @@ namespace BasicMvcApp.Controllers
             return View("Index", anmalan);
         }
 
-        // POST: //
         [HttpPost]
-        public ActionResult IndexSave(Anmalan incomingAnmalan)
+        public ActionResult TelephoneChanged(AnmalanModel incomingAnmalan)
         {
-            Anmalan anmalan = TempData["anmalan"] as Anmalan;
+            AnmalanModel anmalan = TempData["anmalan"] as AnmalanModel;
+
+            anmalan.TelephoneNumber = incomingAnmalan.TelephoneNumber;
+
+            TempData["anmalan"] = anmalan;
+            return View("Index", anmalan);
+        }
+
+        [HttpPost]
+        public ActionResult IndexSave(AnmalanModel incomingAnmalan)
+        {
+            AnmalanModel anmalan = TempData["anmalan"] as AnmalanModel;
 
             PrismaServiceClient client = new PrismaServiceClient();
             WorkRequest workRequest = new WorkRequest
@@ -208,7 +257,8 @@ namespace BasicMvcApp.Controllers
                 Description = anmalan.WRDescription,
                 FloorCode = anmalan.SelectedFloorCode,
                 RoomCode = anmalan.SelectedRoomCode,
-                WOActionCode = anmalan.SelectedActionCode
+                WOActionCode = anmalan.SelectedActionCode,
+                Telephone = anmalan.TelephoneNumber               
             };
 
             client.PutWorkRequest(workRequest);
@@ -216,5 +266,25 @@ namespace BasicMvcApp.Controllers
 
             return RedirectToAction("Index");
         }
+
+        // GET: //
+        [HttpGet]
+        public virtual ActionResult WorkRequest()
+        {
+            PrismaServiceClient client = new PrismaServiceClient();
+            WorkRequest[] arr =  client.GetWorkRequest(Environment.UserName);
+
+            WorkRequestModel model = new WorkRequestModel();
+            model.WorkRequestList = new List<WorkRequest>(arr);
+
+            return View(model);
+        }
+
+        //// POST: //
+        //[HttpPost]
+        //public virtual ActionResult WorkRequest()
+        //{
+        //    return View();
+        //}
     }
 }
