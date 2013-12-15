@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text;
+using Microsoft.Practices.EnterpriseLibrary.Validation;
 using TwoToWin.Prisma.BasicWCFService.Datalayer;
 using TwoToWin.Prisma.BasicWCFService.Entities;
 using TwoToWin.Prisma.BasicWCFService.Entities.Message;
@@ -38,7 +41,23 @@ namespace TwoToWin.Prisma.BasicWCFService
 
         public ResponseMessageGetBuildings GetBuildings(RequestMessageGetBuildings request)
         {
-            //TODO Validate request
+            //TODO oavsett resultat logga request-objektet
+
+            //TODO Det här borde brytas ut till en generell valideringsfunktion
+            ValidationResults results = Validation.Validate(request);
+
+            if (!results.IsValid)
+            {
+                StringBuilder errorString = new StringBuilder();
+                errorString.AppendLine(String.Format("The following {0} validation errors were detected:", results.Count));
+
+                foreach (Microsoft.Practices.EnterpriseLibrary.Validation.ValidationResult item in results)
+                {
+                    errorString.AppendLine(String.Format("Target:'{0}' Key:'{1}' Tag:'{2}' Message:'{3}'", item.Target, item.Key, item.Tag, item.Message));
+                }
+
+                throw new ValidationException(errorString.ToString());
+            }
 
             ResponseMessageGetBuildings response = new ResponseMessageGetBuildings();
             response.BuildingList = new List<Building>();
@@ -56,13 +75,14 @@ namespace TwoToWin.Prisma.BasicWCFService
                 response.BuildingList.Add(building);
             }
 
+            //TODO oavsett resultat logga response-objektet
             return response;
         }
 
         public IEnumerable<Floor> GetFloors(string buildingCode)
         {
             if (string.IsNullOrEmpty(buildingCode))
-                throw new Exception("Building code cannot be empty"); //TODO gör om till ett businessexception
+                throw new ValidationException("Building code cannot be empty"); //TODO gör om till en validator
 
             List<Floor> floorList = new List<Floor>();
 

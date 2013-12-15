@@ -1,0 +1,94 @@
+﻿@model BasicMvcApp.Models.WorkRequestModel
+
+@{
+    ViewBag.Title = "WorkRequest";
+}
+
+<h2>WorkRequest</h2>
+
+<fieldset>
+    <legend>Anmälningar</legend>
+    @if (Model.WorkRequestList != null && Model.WorkRequestList.Count() > 0)
+    {
+        <table>
+            <tr>
+                <th>
+                    Nr
+                </th>
+                <th>
+                    Skapad datum
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    Aktivitet
+                </th>
+                <th>
+                    Beskrivning
+                </th>
+                <th>
+                    Byggnad
+                </th>
+                <th>
+                    Plan
+                </th>
+                <th>
+                    Rum
+                </th>
+                <th>
+                    AO nr
+                </th>
+                <th>
+                    Del
+                </th>
+                <th>
+                    Status
+                </th>
+            </tr>
+            @foreach (var item in Model.WorkRequestList)
+            {
+                <tr>
+                    <td>
+                        Nummer saknas(db?)
+                    </td>
+                    <td>
+                        Skapad datum saknas
+                    </td>
+                    <td>
+                        Status saknas
+                    </td>
+                    <td>
+                        @item.WOActionCode
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                    <td>
+                        @item.BuildingCode
+                    </td>
+                    <td>
+                        @item.FloorCode
+                    </td>
+                    <td>
+                        @item.RoomCode
+                    </td>
+                    <td>
+                        AO nr saknas
+                    </td>
+                    <td>
+                        Del saknas
+                    </td>
+                    <td>
+                        Status saknas
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        @:<text>No information available</text>
+    }
+</fieldset>
+
