@@ -46,8 +46,27 @@
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
       <HintPath>..\..\..\EntLib6\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.SemanticLogging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EnterpriseLibrary.SemanticLogging.1.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.SemanticLogging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.SemanticLogging.Database, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EnterpriseLibrary.SemanticLogging.Database.1.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.SemanticLogging.Database.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Data, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Validation">
       <HintPath>..\..\..\EntLib6\Microsoft.Practices.EnterpriseLibrary.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.Entity" />
@@ -75,6 +94,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Entities\Message\ResponseMessageBase.cs" />
+    <Compile Include="Common\Logging\PrismaWCFEventSource.cs" />
+    <Compile Include="Common\Serialize\ObjectSerializer.cs" />
     <Compile Include="Datalayer\BLbuilding.cs">
       <DependentUpon>PrismaModel.tt</DependentUpon>
     </Compile>
@@ -105,16 +127,16 @@
     <Compile Include="Datalayer\WOaction.cs">
       <DependentUpon>PrismaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Message\EntityBase.cs" />
-    <Compile Include="Entities\WorkRequest\Action.cs" />
-    <Compile Include="Entities\WorkRequest\Building.cs" />
-    <Compile Include="Entities\WorkRequest\Floor.cs" />
-    <Compile Include="Entities\Message\Context.cs" />
-    <Compile Include="Entities\Message\IRequestMessage.cs" />
-    <Compile Include="Entities\Message\RequestMessageBase.cs" />
-    <Compile Include="Entities\WorkRequest\Room.cs" />
-    <Compile Include="Entities\WorkRequest\WorkRequest.cs" />
-    <Compile Include="Entities\WorkRequest\Zone.cs" />
+    <Compile Include="Common\Entities\Message\EntityBase.cs" />
+    <Compile Include="Common\Entities\WorkRequest\Action.cs" />
+    <Compile Include="Common\Entities\WorkRequest\Building.cs" />
+    <Compile Include="Common\Entities\WorkRequest\Floor.cs" />
+    <Compile Include="Common\Entities\Message\Context.cs" />
+    <Compile Include="Common\Entities\Message\IRequestMessage.cs" />
+    <Compile Include="Common\Entities\Message\RequestMessageBase.cs" />
+    <Compile Include="Common\Entities\WorkRequest\Room.cs" />
+    <Compile Include="Common\Entities\WorkRequest\WorkRequest.cs" />
+    <Compile Include="Common\Entities\WorkRequest\Zone.cs" />
     <Compile Include="PrismaService.svc.cs">
       <DependentUpon>PrismaService.svc</DependentUpon>
     </Compile>
@@ -123,9 +145,9 @@
     <Compile Include="Datalayer\WOrequest.cs">
       <DependentUpon>PrismaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Message\RequestMessageGetAllZones.cs" />
-    <Compile Include="Entities\Message\ResponseMessageGetAllZones.cs" />
-    <Compile Include="Entities\Message\RequestMessageGetBuildings.cs" />
+    <Compile Include="Common\Entities\Message\RequestMessageGetAllZones.cs" />
+    <Compile Include="Common\Entities\Message\ResponseMessageGetAllZones.cs" />
+    <Compile Include="Common\Entities\Message\RequestMessageGetBuildings.cs" />
     <Compile Include="ResponseMessageGetBuildings.cs" />
   </ItemGroup>
   <ItemGroup>

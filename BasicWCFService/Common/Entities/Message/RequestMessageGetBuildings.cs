@@ -13,6 +13,7 @@ namespace TwoToWin.Prisma.BasicWCFService
     [HasSelfValidation]
     public class RequestMessageGetBuildings : RequestMessageBase
     {
+        [DataMember]
         public string ZoneCode { get; set; }
 
         //[SelfValidation]

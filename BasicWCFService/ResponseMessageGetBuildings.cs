@@ -6,7 +6,7 @@ using TwoToWin.Prisma.BasicWCFService.Entities;
 
 namespace TwoToWin.Prisma.BasicWCFService
 {
-    public class ResponseMessageGetBuildings
+    public class ResponseMessageGetBuildings : ResponseMessageBase
     {
         public List<Building> BuildingList { get; set; }
     }

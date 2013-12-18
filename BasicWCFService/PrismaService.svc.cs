@@ -1,10 +1,18 @@
-﻿using System;
-using System.Collections;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
+using Microsoft.Practices.EnterpriseLibrary.SemanticLogging;
 using Microsoft.Practices.EnterpriseLibrary.Validation;
+using TwoToWin.Prisma.BasicWCFService.Common.Logging;
+using TwoToWin.Prisma.BasicWCFService.Common.Serialize;
 using TwoToWin.Prisma.BasicWCFService.Datalayer;
 using TwoToWin.Prisma.BasicWCFService.Entities;
 using TwoToWin.Prisma.BasicWCFService.Entities.Message;
@@ -18,11 +26,24 @@ namespace TwoToWin.Prisma.BasicWCFService
         public PrismaService()
         {
             dbPrisma = new Prisma_FastighetEntities();
+
+            //var listener = new ObservableEventListener();
+            //listener.EnableEvents(BasicLogger.Log, System.Diagnostics.Tracing.EventLevel.LogAlways, Keywords.All);
+            //listener.LogToFlatFile(@"c:\temp\log2.txt");
+            
+            //var connStr = System.Configuration.ConfigurationManager.ConnectionStrings["LoggingDB"].ConnectionString;
+            //listener.LogToSqlDatabase("Prisma",connStr);
+            
+            var sqlListener = SqlDatabaseLog.CreateListener("PrismaWCF", "Data Source=.\\sqlexpress;Initial Catalog=Logging;Integrated Security=True");
+            sqlListener.EnableEvents(BasicLogger.Log, System.Diagnostics.Tracing.EventLevel.Informational);
         }
 
         public ResponseMessageGetAllZones GetAllZones(RequestMessageGetAllZones request)
         {
             //TODO Validate request
+
+            var str = ObjectSerializer.SerializeObject(request);
+            BasicLogger.Log.Info(str);
 
             ResponseMessageGetAllZones response = new ResponseMessageGetAllZones();
             response.Zones = new List<Zone>();
@@ -36,14 +57,17 @@ namespace TwoToWin.Prisma.BasicWCFService
                 response.Zones.Add(zone);
             }
 
+            var str2 = ObjectSerializer.SerializeObject(response);
+            BasicLogger.Log.Info(str2);
+
             return response;
         }
 
         public ResponseMessageGetBuildings GetBuildings(RequestMessageGetBuildings request)
         {
-            //TODO oavsett resultat logga request-objektet
+            var str = ObjectSerializer.SerializeObject(request);           
+            BasicLogger.Log.Info(str);
 
-            //TODO Det här borde brytas ut till en generell valideringsfunktion
             ValidationResults results = Validation.Validate(request);
 
             if (!results.IsValid)
@@ -56,7 +80,9 @@ namespace TwoToWin.Prisma.BasicWCFService
                     errorString.AppendLine(String.Format("Target:'{0}' Key:'{1}' Tag:'{2}' Message:'{3}'", item.Target, item.Key, item.Tag, item.Message));
                 }
 
-                throw new ValidationException(errorString.ToString());
+                BasicLogger.Log.Critical(errorString.ToString());
+
+                //TODO sätt i responsen att det inte gick bra
             }
 
             ResponseMessageGetBuildings response = new ResponseMessageGetBuildings();
@@ -75,7 +101,9 @@ namespace TwoToWin.Prisma.BasicWCFService
                 response.BuildingList.Add(building);
             }
 
-            //TODO oavsett resultat logga response-objektet
+            var str2 = ObjectSerializer.SerializeObject(response);
+            BasicLogger.Log.Info(str2);
+
             return response;
         }
 
