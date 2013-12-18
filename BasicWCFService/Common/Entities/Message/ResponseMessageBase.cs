@@ -39,9 +39,8 @@ namespace TwoToWin.Prisma.BasicWCFService.Common.Entities.Message
     }
 
     [DataContract]
-    public abstract class EntityListBase<T> : System.Collections.Generic.List<T>, ICloneable, ICloneableList
+    public abstract class EntityListBase<T> : System.Collections.Generic.List<T>, ICloneable//, ICloneableList
     {
-
         //''' <summary>
         //''' kopierar allt i en klass till en anna som har matchande propertys, kravet är
         //''' att source och destination klassen har samma namn vilket löses genom att Serializera klassen
@@ -78,6 +77,10 @@ namespace TwoToWin.Prisma.BasicWCFService.Common.Entities.Message
         //public Function Clone(excludeProperties As System.Collections.ArrayList) As Object Implements ICloneableList.Clone
         //Return CloneHelper.CloneList(Me, excludeProperties)
         //End Function
+        public object Clone()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     [DataContract]
