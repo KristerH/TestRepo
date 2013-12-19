@@ -11,6 +11,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using Microsoft.Practices.EnterpriseLibrary.SemanticLogging;
 using Microsoft.Practices.EnterpriseLibrary.Validation;
+using TwoToWin.Prisma.BasicWCFService.Common.Entities.Message;
 using TwoToWin.Prisma.BasicWCFService.Common.Logging;
 using TwoToWin.Prisma.BasicWCFService.Common.Serialize;
 using TwoToWin.Prisma.BasicWCFService.Datalayer;
@@ -40,14 +41,48 @@ namespace TwoToWin.Prisma.BasicWCFService
 
         public ResponseMessageGetAllZones GetAllZones(RequestMessageGetAllZones request)
         {
-            //TODO Validate request
-
-            var str = ObjectSerializer.SerializeObject(request);
-            BasicLogger.Log.Info(str);
-
+            //Create request
             ResponseMessageGetAllZones response = new ResponseMessageGetAllZones();
             response.Zones = new List<Zone>();
 
+            //Log request
+            var str = ObjectSerializer.SerializeObject(request);
+            BasicLogger.Log.Info(str);
+
+            //Validate request workflow
+            ValidationResults validationResults = Validation.Validate(request);
+
+            if (!validationResults.IsValid)
+            {
+                StringBuilder errorString = new StringBuilder();
+                errorString.AppendLine(String.Format("The following {0} validation errors were detected:", validationResults.Count));
+
+                foreach (Microsoft.Practices.EnterpriseLibrary.Validation.ValidationResult item in validationResults)
+                {
+                    errorString.AppendLine(String.Format("Target:'{0}' Key:'{1}' Tag:'{2}' Message:'{3}'", item.Target, item.Key, item.Tag, item.Message));
+                }
+
+                BasicLogger.Log.Critical(errorString.ToString());
+
+                response.Status = ResponseMessageBase.MessageStatus.FAILURE;
+                response.Errors = new MessageErrorList();
+                foreach (var validationResult in validationResults)
+                {
+                    //TODO skapa en constructor i MessageError som tar in ett validationresult objekt
+                    response.Errors.Add(new MessageError
+                        {
+                            ErrorMessage = validationResult.Message,
+                            ErrorNumber = validationResult.Key,
+                            Severity = MessageError.ErrorSeverity.Error,
+                            Type = MessageError.ErrorType.ValidationError
+                        } );
+                }
+
+                return response;
+            }
+
+            //TODO flytta till ett busineslayer
+            //Execute get building zones workflow
             foreach (var item in dbPrisma.BLzone.ToList())
             {
                 Zone zone = new Zone();
@@ -57,8 +92,9 @@ namespace TwoToWin.Prisma.BasicWCFService
                 response.Zones.Add(zone);
             }
 
-            var str2 = ObjectSerializer.SerializeObject(response);
-            BasicLogger.Log.Info(str2);
+            //Log response
+            str = ObjectSerializer.SerializeObject(response);
+            BasicLogger.Log.Info(str);
 
             return response;
         }
@@ -82,7 +118,7 @@ namespace TwoToWin.Prisma.BasicWCFService
 
                 BasicLogger.Log.Critical(errorString.ToString());
 
-                //TODO sätt i responsen att det inte gick bra
+                //TODO sätt i responsen att det inte gick bra och retunera responsen
             }
 
             ResponseMessageGetBuildings response = new ResponseMessageGetBuildings();
@@ -101,20 +137,23 @@ namespace TwoToWin.Prisma.BasicWCFService
                 response.BuildingList.Add(building);
             }
 
-            var str2 = ObjectSerializer.SerializeObject(response);
-            BasicLogger.Log.Info(str2);
+            str = ObjectSerializer.SerializeObject(response);
+            BasicLogger.Log.Info(str);
 
             return response;
         }
 
-        public IEnumerable<Floor> GetFloors(string buildingCode)
+        public ResponseMessageGetFloors GetFloors(RequestMessageGetFloors request)
         {
-            if (string.IsNullOrEmpty(buildingCode))
-                throw new ValidationException("Building code cannot be empty"); //TODO gör om till en validator
+            ResponseMessageGetFloors response = new ResponseMessageGetFloors();
+
+            //TODO gör om till en validator
+            if (string.IsNullOrEmpty(request.BuildingCode))
+                throw new ValidationException("Building code cannot be empty"); 
 
             List<Floor> floorList = new List<Floor>();
 
-            List<BLfloor> blfloorList = dbPrisma.BLfloor.Where(x => x.blbuilding_code == buildingCode).ToList();
+            List<BLfloor> blfloorList = dbPrisma.BLfloor.Where(x => x.blbuilding_code == request.BuildingCode).ToList();
 
             foreach (var blFloor in blfloorList)
             {
@@ -125,20 +164,23 @@ namespace TwoToWin.Prisma.BasicWCFService
                 floorList.Add(floor);
             }
 
-            return floorList;
+            response.Floors = floorList;
+            return response;
         }
 
-        public IEnumerable<Room> GetRooms(string buildingCode, string floorCode)
+        public ResponseMessageGetRooms GetRooms(RequestMessageGetRooms request)
         {
-            if (string.IsNullOrEmpty(buildingCode))
+            ResponseMessageGetRooms response = new ResponseMessageGetRooms();
+
+            if (string.IsNullOrEmpty(request.BuildingCode))
                 throw new Exception("Building code cannot be empty"); //TODO gör om till ett businessexception
 
-            if (string.IsNullOrEmpty(floorCode))
+            if (string.IsNullOrEmpty(request.FloorCode))
                 throw new Exception("Floor code cannot be empty"); //TODO gör om till ett businessexception
 
             List<Room> roomList = new List<Room>();
 
-            List<BLroom> blRoomList = dbPrisma.BLroom.Where(x => x.blbuilding_code == buildingCode && x.blfloor_code == floorCode).ToList();
+            List<BLroom> blRoomList = dbPrisma.BLroom.Where(x => x.blbuilding_code == request.BuildingCode && x.blfloor_code == request.FloorCode).ToList();
 
             foreach (var blRoom in blRoomList)
             {
@@ -148,7 +190,9 @@ namespace TwoToWin.Prisma.BasicWCFService
                 roomList.Add(room);
             }
 
-            return roomList;
+            response.Rooms = roomList;
+
+            return response;
         }
 
         public IEnumerable<ActionEntity> GetAllWORequestActions()

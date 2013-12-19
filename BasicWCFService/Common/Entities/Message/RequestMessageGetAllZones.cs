@@ -13,7 +13,7 @@ namespace TwoToWin.Prisma.BasicWCFService.Entities.Message
     {
         public override void Validate(Microsoft.Practices.EnterpriseLibrary.Validation.ValidationResults results)
         {
-            throw new NotImplementedException();
+            base.ValidateBase(results);
         }
     }
 }

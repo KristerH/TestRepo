@@ -16,10 +16,10 @@ namespace TwoToWin.Prisma.BasicWCFService
         ResponseMessageGetBuildings GetBuildings(RequestMessageGetBuildings request);
 
         [OperationContract]
-        IEnumerable<Floor> GetFloors(String buildingCode);
+        ResponseMessageGetFloors GetFloors(RequestMessageGetFloors request);
 
         [OperationContract]
-        IEnumerable<Room> GetRooms(string buildingCode, string floorCode);
+        ResponseMessageGetRooms GetRooms(RequestMessageGetRooms request);
 
         [OperationContract]
         IEnumerable<ActionEntity> GetAllWORequestActions();

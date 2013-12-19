@@ -148,7 +148,11 @@
     <Compile Include="Common\Entities\Message\RequestMessageGetAllZones.cs" />
     <Compile Include="Common\Entities\Message\ResponseMessageGetAllZones.cs" />
     <Compile Include="Common\Entities\Message\RequestMessageGetBuildings.cs" />
-    <Compile Include="ResponseMessageGetBuildings.cs" />
+    <Compile Include="Common\Entities\Message\RequestMessageGetFloors.cs" />
+    <Compile Include="Common\Entities\Message\ResponseMessageGetBuildings.cs" />
+    <Compile Include="Common\Entities\Message\ResponseMessageGetFloors.cs" />
+    <Compile Include="Common\Entities\Message\RequestMessageGetRooms.cs" />
+    <Compile Include="Common\Entities\Message\ResponseMessageGetRooms.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
