@@ -146,12 +146,15 @@ namespace BasicMvcApp.Controllers
             }
             else
             {
-                PrismaServiceClient client = new PrismaServiceClient();
-
                 anmalan.SelectedBuildingCode = incomingAnmalan.SelectedBuildingCode;
 
+                PrismaServiceClient client = new PrismaServiceClient();
+                RequestMessageGetFloors request = new RequestMessageGetFloors();
+                request.BuildingCode = anmalan.SelectedBuildingCode;
+
                 //Floor
-                var floors = client.GetFloors(anmalan.SelectedBuildingCode);
+                var response = client.GetFloors(request);
+                var floors = response.Floors;
                 anmalan.FloorList = new List<Floor>(floors);
                 anmalan.SelectedFloorCode = null;
 
@@ -181,15 +184,23 @@ namespace BasicMvcApp.Controllers
                 anmalan.SelectedRoomCode = null;
             }
             else
-            {
+            {                
                 PrismaServiceClient client = new PrismaServiceClient();
 
-                var floors = client.GetFloors(anmalan.SelectedBuildingCode);
+                RequestMessageGetFloors requestMessageGetFloors = new RequestMessageGetFloors();
+                requestMessageGetFloors.BuildingCode = anmalan.SelectedBuildingCode;
+
+                var responseMessageGetFloors = client.GetFloors(requestMessageGetFloors);
+                var floors = responseMessageGetFloors.Floors;
                 anmalan.FloorList = new List<Floor>(floors);
                 anmalan.SelectedFloorCode = anmalan.SelectedFloorCode;
 
                 //Room
-                var rooms = client.GetRooms(anmalan.SelectedBuildingCode, anmalan.SelectedFloorCode);
+                RequestMessageGetRooms requestMessageGetRooms = new RequestMessageGetRooms();
+                requestMessageGetRooms.BuildingCode = anmalan.SelectedBuildingCode;
+                requestMessageGetRooms.FloorCode = anmalan.SelectedFloorCode;
+                var responseMessageGetRooms = client.GetRooms(requestMessageGetRooms);
+                var rooms = responseMessageGetRooms.Rooms;
                 anmalan.RoomList = new List<Room>(rooms);
                 anmalan.SelectedRoomCode = null;
 
@@ -267,12 +278,17 @@ namespace BasicMvcApp.Controllers
             return RedirectToAction("Index");
         }
 
+
         // GET: //
         [HttpGet]
-        public virtual ActionResult WorkRequest()
+        public virtual ActionResult WorkRequestView()
         {
             PrismaServiceClient client = new PrismaServiceClient();
-            WorkRequest[] arr =  client.GetWorkRequest(Environment.UserName);
+
+            RequestMessageGetWorkRequest request = new RequestMessageGetWorkRequest();
+            request.Username = Environment.UserName;
+            var response = client.GetWorkRequest(request);
+            WorkRequest[] arr = response.WorkRequestList;
 
             WorkRequestModel model = new WorkRequestModel();
             model.WorkRequestList = new List<WorkRequest>(arr);
@@ -281,10 +297,11 @@ namespace BasicMvcApp.Controllers
         }
 
         //// POST: //
-        //[HttpPost]
-        //public virtual ActionResult WorkRequest()
-        //{
-        //    return View();
-        //}
+        public virtual ActionResult WorkRequestRowSelected(int? wrNumber)
+        {
+            //TODO Här ska jag skicka användaren till en sida som visar detaljer om workrequesten
+
+            return View("WorkRequestView");
+        }
     }
 }

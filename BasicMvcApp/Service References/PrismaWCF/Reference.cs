@@ -19,6 +19,10 @@ namespace BasicMvcApp.PrismaWCF {
         "Message")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicMvcApp.PrismaWCF.RequestMessageGetBuildings))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicMvcApp.PrismaWCF.RequestMessageGetFloors))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicMvcApp.PrismaWCF.RequestMessageGetRooms))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicMvcApp.PrismaWCF.RequestMessageGetWorkRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicMvcApp.PrismaWCF.ResponseMessageGetWorkRequest))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicMvcApp.PrismaWCF.RequestMessageGetAllZones))]
     public partial class RequestMessageBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -325,6 +329,116 @@ namespace BasicMvcApp.PrismaWCF {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RequestMessageGetFloors", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService")]
+    [System.SerializableAttribute()]
+    public partial class RequestMessageGetFloors : BasicMvcApp.PrismaWCF.RequestMessageBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BuildingCodeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BuildingCode {
+            get {
+                return this.BuildingCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BuildingCodeField, value) != true)) {
+                    this.BuildingCodeField = value;
+                    this.RaisePropertyChanged("BuildingCode");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RequestMessageGetRooms", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService")]
+    [System.SerializableAttribute()]
+    public partial class RequestMessageGetRooms : BasicMvcApp.PrismaWCF.RequestMessageBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BuildingCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FloorCodeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BuildingCode {
+            get {
+                return this.BuildingCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BuildingCodeField, value) != true)) {
+                    this.BuildingCodeField = value;
+                    this.RaisePropertyChanged("BuildingCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FloorCode {
+            get {
+                return this.FloorCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FloorCodeField, value) != true)) {
+                    this.FloorCodeField = value;
+                    this.RaisePropertyChanged("FloorCode");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="RequestMessageGetWorkRequest", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities." +
+        "Message")]
+    [System.SerializableAttribute()]
+    public partial class RequestMessageGetWorkRequest : BasicMvcApp.PrismaWCF.RequestMessageBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResponseMessageGetWorkRequest", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities." +
+        "Message")]
+    [System.SerializableAttribute()]
+    public partial class ResponseMessageGetWorkRequest : BasicMvcApp.PrismaWCF.RequestMessageBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicMvcApp.PrismaWCF.WorkRequest[] WorkRequestListField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicMvcApp.PrismaWCF.WorkRequest[] WorkRequestList {
+            get {
+                return this.WorkRequestListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WorkRequestListField, value) != true)) {
+                    this.WorkRequestListField = value;
+                    this.RaisePropertyChanged("WorkRequestList");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="RequestMessageGetAllZones", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities." +
         "Message")]
     [System.SerializableAttribute()]
@@ -404,16 +518,45 @@ namespace BasicMvcApp.PrismaWCF {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ResponseMessageGetAllZones", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities." +
-        "Message")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="WorkRequest", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities")]
     [System.SerializableAttribute()]
-    public partial class ResponseMessageGetAllZones : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class WorkRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private BasicMvcApp.PrismaWCF.Zone[] ZonesField;
+        private string BuildingCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CreatedByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> CreatedDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FloorCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TelephoneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WOActionCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int WORequestCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> WorkorderCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> WorkorderPartCodeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -426,14 +569,144 @@ namespace BasicMvcApp.PrismaWCF {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public BasicMvcApp.PrismaWCF.Zone[] Zones {
+        public string BuildingCode {
             get {
-                return this.ZonesField;
+                return this.BuildingCodeField;
             }
             set {
-                if ((object.ReferenceEquals(this.ZonesField, value) != true)) {
-                    this.ZonesField = value;
-                    this.RaisePropertyChanged("Zones");
+                if ((object.ReferenceEquals(this.BuildingCodeField, value) != true)) {
+                    this.BuildingCodeField = value;
+                    this.RaisePropertyChanged("BuildingCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CreatedBy {
+            get {
+                return this.CreatedByField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreatedByField, value) != true)) {
+                    this.CreatedByField = value;
+                    this.RaisePropertyChanged("CreatedBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> CreatedDate {
+            get {
+                return this.CreatedDateField;
+            }
+            set {
+                if ((this.CreatedDateField.Equals(value) != true)) {
+                    this.CreatedDateField = value;
+                    this.RaisePropertyChanged("CreatedDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FloorCode {
+            get {
+                return this.FloorCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FloorCodeField, value) != true)) {
+                    this.FloorCodeField = value;
+                    this.RaisePropertyChanged("FloorCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomCode {
+            get {
+                return this.RoomCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomCodeField, value) != true)) {
+                    this.RoomCodeField = value;
+                    this.RaisePropertyChanged("RoomCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Telephone {
+            get {
+                return this.TelephoneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TelephoneField, value) != true)) {
+                    this.TelephoneField = value;
+                    this.RaisePropertyChanged("Telephone");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string WOActionCode {
+            get {
+                return this.WOActionCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WOActionCodeField, value) != true)) {
+                    this.WOActionCodeField = value;
+                    this.RaisePropertyChanged("WOActionCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int WORequestCode {
+            get {
+                return this.WORequestCodeField;
+            }
+            set {
+                if ((this.WORequestCodeField.Equals(value) != true)) {
+                    this.WORequestCodeField = value;
+                    this.RaisePropertyChanged("WORequestCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> WorkorderCode {
+            get {
+                return this.WorkorderCodeField;
+            }
+            set {
+                if ((this.WorkorderCodeField.Equals(value) != true)) {
+                    this.WorkorderCodeField = value;
+                    this.RaisePropertyChanged("WorkorderCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> WorkorderPartCode {
+            get {
+                return this.WorkorderPartCodeField;
+            }
+            set {
+                if ((this.WorkorderPartCodeField.Equals(value) != true)) {
+                    this.WorkorderPartCodeField = value;
+                    this.RaisePropertyChanged("WorkorderPartCode");
                 }
             }
         }
@@ -450,15 +723,25 @@ namespace BasicMvcApp.PrismaWCF {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ResponseMessageGetBuildings", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResponseMessageBase", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Common.En" +
+        "tities.Message")]
     [System.SerializableAttribute()]
-    public partial class ResponseMessageGetBuildings : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicMvcApp.PrismaWCF.ResponseMessageGetBuildings))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicMvcApp.PrismaWCF.ResponseMessageGetRooms))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicMvcApp.PrismaWCF.ResponseMessageGetAllZones))]
+    public partial class ResponseMessageBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private BasicMvcApp.PrismaWCF.Building[] BuildingListField;
+        private BasicMvcApp.PrismaWCF.MessageError[] ErrorsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicMvcApp.PrismaWCF.ResponseMessageBase.MessageStatus StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TransactionIdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -469,6 +752,79 @@ namespace BasicMvcApp.PrismaWCF {
                 this.extensionDataField = value;
             }
         }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicMvcApp.PrismaWCF.MessageError[] Errors {
+            get {
+                return this.ErrorsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorsField, value) != true)) {
+                    this.ErrorsField = value;
+                    this.RaisePropertyChanged("Errors");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicMvcApp.PrismaWCF.ResponseMessageBase.MessageStatus Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((this.StatusField.Equals(value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TransactionId {
+            get {
+                return this.TransactionIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TransactionIdField, value) != true)) {
+                    this.TransactionIdField = value;
+                    this.RaisePropertyChanged("TransactionId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="ResponseMessageBase.MessageStatus", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Common.En" +
+            "tities.Message")]
+        public enum MessageStatus : int {
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            SUCCESS = 0,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            FAILURE = -1,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            WARNING = -2,
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResponseMessageGetBuildings", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService")]
+    [System.SerializableAttribute()]
+    public partial class ResponseMessageGetBuildings : BasicMvcApp.PrismaWCF.ResponseMessageBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicMvcApp.PrismaWCF.Building[] BuildingListField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public BasicMvcApp.PrismaWCF.Building[] BuildingList {
@@ -482,6 +838,154 @@ namespace BasicMvcApp.PrismaWCF {
                 }
             }
         }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResponseMessageGetRooms", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService")]
+    [System.SerializableAttribute()]
+    public partial class ResponseMessageGetRooms : BasicMvcApp.PrismaWCF.ResponseMessageBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicMvcApp.PrismaWCF.Room[] RoomsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicMvcApp.PrismaWCF.Room[] Rooms {
+            get {
+                return this.RoomsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomsField, value) != true)) {
+                    this.RoomsField = value;
+                    this.RaisePropertyChanged("Rooms");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResponseMessageGetAllZones", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities." +
+        "Message")]
+    [System.SerializableAttribute()]
+    public partial class ResponseMessageGetAllZones : BasicMvcApp.PrismaWCF.ResponseMessageBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicMvcApp.PrismaWCF.Zone[] ZonesField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicMvcApp.PrismaWCF.Zone[] Zones {
+            get {
+                return this.ZonesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ZonesField, value) != true)) {
+                    this.ZonesField = value;
+                    this.RaisePropertyChanged("Zones");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MessageError", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Common.En" +
+        "tities.Message")]
+    [System.SerializableAttribute()]
+    public partial class MessageError : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AdditionInfoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorMessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicMvcApp.PrismaWCF.MessageError.ErrorSeverity SeverityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicMvcApp.PrismaWCF.MessageError.ErrorType TypeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AdditionInfo {
+            get {
+                return this.AdditionInfoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AdditionInfoField, value) != true)) {
+                    this.AdditionInfoField = value;
+                    this.RaisePropertyChanged("AdditionInfo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ErrorMessage {
+            get {
+                return this.ErrorMessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorMessageField, value) != true)) {
+                    this.ErrorMessageField = value;
+                    this.RaisePropertyChanged("ErrorMessage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ErrorNumber {
+            get {
+                return this.ErrorNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorNumberField, value) != true)) {
+                    this.ErrorNumberField = value;
+                    this.RaisePropertyChanged("ErrorNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicMvcApp.PrismaWCF.MessageError.ErrorSeverity Severity {
+            get {
+                return this.SeverityField;
+            }
+            set {
+                if ((this.SeverityField.Equals(value) != true)) {
+                    this.SeverityField = value;
+                    this.RaisePropertyChanged("Severity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicMvcApp.PrismaWCF.MessageError.ErrorType Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((this.TypeField.Equals(value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
+                }
+            }
+        }
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
@@ -490,6 +994,39 @@ namespace BasicMvcApp.PrismaWCF {
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="MessageError.ErrorSeverity", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Common.En" +
+            "tities.Message")]
+        public enum ErrorSeverity : int {
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            NotSet = 0,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Information = 10,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Warning = 20,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            Error = 30,
+        }
+        
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name="MessageError.ErrorType", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Common.En" +
+            "tities.Message")]
+        public enum ErrorType : int {
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            NotSet = 0,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            BusinessError = 10,
+            
+            [System.Runtime.Serialization.EnumMemberAttribute()]
+            ValidationError = 20,
         }
     }
     
@@ -540,6 +1077,112 @@ namespace BasicMvcApp.PrismaWCF {
                 if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
                     this.DescriptionField = value;
                     this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Room", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities")]
+    [System.SerializableAttribute()]
+    public partial class Room : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomCodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomCode {
+            get {
+                return this.RoomCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomCodeField, value) != true)) {
+                    this.RoomCodeField = value;
+                    this.RaisePropertyChanged("RoomCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResponseMessageGetFloors", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService")]
+    [System.SerializableAttribute()]
+    public partial class ResponseMessageGetFloors : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicMvcApp.PrismaWCF.Floor[] FloorsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicMvcApp.PrismaWCF.Floor[] Floors {
+            get {
+                return this.FloorsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FloorsField, value) != true)) {
+                    this.FloorsField = value;
+                    this.RaisePropertyChanged("Floors");
                 }
             }
         }
@@ -633,67 +1276,6 @@ namespace BasicMvcApp.PrismaWCF {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Room", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities")]
-    [System.SerializableAttribute()]
-    public partial class Room : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RoomCodeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RoomCode {
-            get {
-                return this.RoomCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RoomCodeField, value) != true)) {
-                    this.RoomCodeField = value;
-                    this.RaisePropertyChanged("RoomCode");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ActionEntity", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities")]
     [System.SerializableAttribute()]
     public partial class ActionEntity : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -753,147 +1335,6 @@ namespace BasicMvcApp.PrismaWCF {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="WorkRequest", Namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities")]
-    [System.SerializableAttribute()]
-    public partial class WorkRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BuildingCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CreatedByField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FloorCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RoomCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TelephoneField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string WOActionCodeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string BuildingCode {
-            get {
-                return this.BuildingCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BuildingCodeField, value) != true)) {
-                    this.BuildingCodeField = value;
-                    this.RaisePropertyChanged("BuildingCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CreatedBy {
-            get {
-                return this.CreatedByField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CreatedByField, value) != true)) {
-                    this.CreatedByField = value;
-                    this.RaisePropertyChanged("CreatedBy");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FloorCode {
-            get {
-                return this.FloorCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FloorCodeField, value) != true)) {
-                    this.FloorCodeField = value;
-                    this.RaisePropertyChanged("FloorCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RoomCode {
-            get {
-                return this.RoomCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RoomCodeField, value) != true)) {
-                    this.RoomCodeField = value;
-                    this.RaisePropertyChanged("RoomCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Telephone {
-            get {
-                return this.TelephoneField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TelephoneField, value) != true)) {
-                    this.TelephoneField = value;
-                    this.RaisePropertyChanged("Telephone");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string WOActionCode {
-            get {
-                return this.WOActionCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.WOActionCodeField, value) != true)) {
-                    this.WOActionCodeField = value;
-                    this.RaisePropertyChanged("WOActionCode");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PrismaWCF.IPrismaService")]
     public interface IPrismaService {
@@ -911,16 +1352,16 @@ namespace BasicMvcApp.PrismaWCF {
         System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.ResponseMessageGetBuildings> GetBuildingsAsync(BasicMvcApp.PrismaWCF.RequestMessageGetBuildings request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetFloors", ReplyAction="http://tempuri.org/IPrismaService/GetFloorsResponse")]
-        BasicMvcApp.PrismaWCF.Floor[] GetFloors(string buildingCode);
+        BasicMvcApp.PrismaWCF.ResponseMessageGetFloors GetFloors(BasicMvcApp.PrismaWCF.RequestMessageGetFloors request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetFloors", ReplyAction="http://tempuri.org/IPrismaService/GetFloorsResponse")]
-        System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.Floor[]> GetFloorsAsync(string buildingCode);
+        System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.ResponseMessageGetFloors> GetFloorsAsync(BasicMvcApp.PrismaWCF.RequestMessageGetFloors request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetRooms", ReplyAction="http://tempuri.org/IPrismaService/GetRoomsResponse")]
-        BasicMvcApp.PrismaWCF.Room[] GetRooms(string buildingCode, string floorCode);
+        BasicMvcApp.PrismaWCF.ResponseMessageGetRooms GetRooms(BasicMvcApp.PrismaWCF.RequestMessageGetRooms request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetRooms", ReplyAction="http://tempuri.org/IPrismaService/GetRoomsResponse")]
-        System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.Room[]> GetRoomsAsync(string buildingCode, string floorCode);
+        System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.ResponseMessageGetRooms> GetRoomsAsync(BasicMvcApp.PrismaWCF.RequestMessageGetRooms request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetAllWORequestActions", ReplyAction="http://tempuri.org/IPrismaService/GetAllWORequestActionsResponse")]
         BasicMvcApp.PrismaWCF.ActionEntity[] GetAllWORequestActions();
@@ -935,10 +1376,10 @@ namespace BasicMvcApp.PrismaWCF {
         System.Threading.Tasks.Task<bool> PutWorkRequestAsync(BasicMvcApp.PrismaWCF.WorkRequest workRequest);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetWorkRequest", ReplyAction="http://tempuri.org/IPrismaService/GetWorkRequestResponse")]
-        BasicMvcApp.PrismaWCF.WorkRequest[] GetWorkRequest(string username);
+        BasicMvcApp.PrismaWCF.ResponseMessageGetWorkRequest GetWorkRequest(BasicMvcApp.PrismaWCF.RequestMessageGetWorkRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPrismaService/GetWorkRequest", ReplyAction="http://tempuri.org/IPrismaService/GetWorkRequestResponse")]
-        System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.WorkRequest[]> GetWorkRequestAsync(string username);
+        System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.ResponseMessageGetWorkRequest> GetWorkRequestAsync(BasicMvcApp.PrismaWCF.RequestMessageGetWorkRequest request);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -984,20 +1425,20 @@ namespace BasicMvcApp.PrismaWCF {
             return base.Channel.GetBuildingsAsync(request);
         }
         
-        public BasicMvcApp.PrismaWCF.Floor[] GetFloors(string buildingCode) {
-            return base.Channel.GetFloors(buildingCode);
+        public BasicMvcApp.PrismaWCF.ResponseMessageGetFloors GetFloors(BasicMvcApp.PrismaWCF.RequestMessageGetFloors request) {
+            return base.Channel.GetFloors(request);
         }
         
-        public System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.Floor[]> GetFloorsAsync(string buildingCode) {
-            return base.Channel.GetFloorsAsync(buildingCode);
+        public System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.ResponseMessageGetFloors> GetFloorsAsync(BasicMvcApp.PrismaWCF.RequestMessageGetFloors request) {
+            return base.Channel.GetFloorsAsync(request);
         }
         
-        public BasicMvcApp.PrismaWCF.Room[] GetRooms(string buildingCode, string floorCode) {
-            return base.Channel.GetRooms(buildingCode, floorCode);
+        public BasicMvcApp.PrismaWCF.ResponseMessageGetRooms GetRooms(BasicMvcApp.PrismaWCF.RequestMessageGetRooms request) {
+            return base.Channel.GetRooms(request);
         }
         
-        public System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.Room[]> GetRoomsAsync(string buildingCode, string floorCode) {
-            return base.Channel.GetRoomsAsync(buildingCode, floorCode);
+        public System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.ResponseMessageGetRooms> GetRoomsAsync(BasicMvcApp.PrismaWCF.RequestMessageGetRooms request) {
+            return base.Channel.GetRoomsAsync(request);
         }
         
         public BasicMvcApp.PrismaWCF.ActionEntity[] GetAllWORequestActions() {
@@ -1016,12 +1457,12 @@ namespace BasicMvcApp.PrismaWCF {
             return base.Channel.PutWorkRequestAsync(workRequest);
         }
         
-        public BasicMvcApp.PrismaWCF.WorkRequest[] GetWorkRequest(string username) {
-            return base.Channel.GetWorkRequest(username);
+        public BasicMvcApp.PrismaWCF.ResponseMessageGetWorkRequest GetWorkRequest(BasicMvcApp.PrismaWCF.RequestMessageGetWorkRequest request) {
+            return base.Channel.GetWorkRequest(request);
         }
         
-        public System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.WorkRequest[]> GetWorkRequestAsync(string username) {
-            return base.Channel.GetWorkRequestAsync(username);
+        public System.Threading.Tasks.Task<BasicMvcApp.PrismaWCF.ResponseMessageGetWorkRequest> GetWorkRequestAsync(BasicMvcApp.PrismaWCF.RequestMessageGetWorkRequest request) {
+            return base.Channel.GetWorkRequestAsync(request);
         }
     }
 }

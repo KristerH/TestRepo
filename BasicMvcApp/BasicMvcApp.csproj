@@ -134,22 +134,22 @@
     <Content Include="Scripts\MicrosoftMvcAjax.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
-    <Content Include="Service References\PrismaWCF\BasicMvcApp.PrismaWCF.Floor.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\PrismaWCF\BasicMvcApp.PrismaWCF.Room.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\PrismaWCF\BasicMvcApp.PrismaWCF.ActionEntity.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\PrismaWCF\BasicMvcApp.PrismaWCF.WorkRequest.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\PrismaWCF\BasicMvcApp.PrismaWCF.ResponseMessageGetAllZones.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\PrismaWCF\BasicMvcApp.PrismaWCF.ResponseMessageGetBuildings.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PrismaWCF\BasicMvcApp.PrismaWCF.ResponseMessageGetFloors.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PrismaWCF\BasicMvcApp.PrismaWCF.ResponseMessageGetRooms.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\PrismaWCF\BasicMvcApp.PrismaWCF.ResponseMessageGetWorkRequest.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\PrismaWCF\PrismaService.disco" />
@@ -159,6 +159,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\PrismaWCF\PrismaService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PrismaWCF\PrismaService5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\PrismaWCF\Reference.svcmap">
@@ -186,7 +189,7 @@
     <Content Include="Views\Home\_BuildingPartial2.cshtml" />
     <Content Include="Views\Home\_SelectFloorPartial.cshtml" />
     <Content Include="Views\Home\_SelectRoomPartial.cshtml" />
-    <Content Include="Views\Home\WorkRequest.cshtml" />
+    <Content Include="Views\Home\WorkRequestView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

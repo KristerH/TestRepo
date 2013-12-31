@@ -128,15 +128,15 @@
       <DependentUpon>PrismaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Common\Entities\Message\EntityBase.cs" />
-    <Compile Include="Common\Entities\WorkRequest\Action.cs" />
-    <Compile Include="Common\Entities\WorkRequest\Building.cs" />
-    <Compile Include="Common\Entities\WorkRequest\Floor.cs" />
+    <Compile Include="Common\Entities\WorkRequestEntities\Action.cs" />
+    <Compile Include="Common\Entities\WorkRequestEntities\Building.cs" />
+    <Compile Include="Common\Entities\WorkRequestEntities\Floor.cs" />
     <Compile Include="Common\Entities\Message\Context.cs" />
     <Compile Include="Common\Entities\Message\IRequestMessage.cs" />
     <Compile Include="Common\Entities\Message\RequestMessageBase.cs" />
-    <Compile Include="Common\Entities\WorkRequest\Room.cs" />
-    <Compile Include="Common\Entities\WorkRequest\WorkRequest.cs" />
-    <Compile Include="Common\Entities\WorkRequest\Zone.cs" />
+    <Compile Include="Common\Entities\WorkRequestEntities\Room.cs" />
+    <Compile Include="Common\Entities\WorkRequestEntities\WorkRequest.cs" />
+    <Compile Include="Common\Entities\WorkRequestEntities\Zone.cs" />
     <Compile Include="PrismaService.svc.cs">
       <DependentUpon>PrismaService.svc</DependentUpon>
     </Compile>
@@ -153,6 +153,8 @@
     <Compile Include="Common\Entities\Message\ResponseMessageGetFloors.cs" />
     <Compile Include="Common\Entities\Message\RequestMessageGetRooms.cs" />
     <Compile Include="Common\Entities\Message\ResponseMessageGetRooms.cs" />
+    <Compile Include="Common\Entities\Message\RequestMessageGetWorkRequest.cs" />
+    <Compile Include="Common\Entities\Message\ResponseMessageGetWorkRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

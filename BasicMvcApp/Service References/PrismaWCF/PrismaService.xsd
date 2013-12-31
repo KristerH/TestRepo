@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities.Message" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities.Message" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:52504/PrismaService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import schemaLocation="http://localhost:52504/PrismaService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" />
+  <xs:import schemaLocation="http://localhost:52504/PrismaService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" />
+  <xs:import schemaLocation="http://localhost:52504/PrismaService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Common.Entities.Message" />
   <xs:complexType name="RequestMessageGetAllZones">
     <xs:complexContent mixed="false">
       <xs:extension base="tns:RequestMessageBase">
@@ -103,9 +104,33 @@
   </xs:simpleType>
   <xs:element name="RequestMessageBase.Environment" nillable="true" type="tns:RequestMessageBase.Environment" />
   <xs:complexType name="ResponseMessageGetAllZones">
-    <xs:sequence>
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" minOccurs="0" name="Zones" nillable="true" type="q1:ArrayOfZone" />
-    </xs:sequence>
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Common.Entities.Message" base="q1:ResponseMessageBase">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" minOccurs="0" name="Zones" nillable="true" type="q2:ArrayOfZone" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
   </xs:complexType>
   <xs:element name="ResponseMessageGetAllZones" nillable="true" type="tns:ResponseMessageGetAllZones" />
+  <xs:complexType name="RequestMessageGetWorkRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessageBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RequestMessageGetWorkRequest" nillable="true" type="tns:RequestMessageGetWorkRequest" />
+  <xs:complexType name="ResponseMessageGetWorkRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:RequestMessageBase">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TwoToWin.Prisma.BasicWCFService.Entities" minOccurs="0" name="WorkRequestList" nillable="true" type="q3:ArrayOfWorkRequest" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResponseMessageGetWorkRequest" nillable="true" type="tns:ResponseMessageGetWorkRequest" />
 </xs:schema>

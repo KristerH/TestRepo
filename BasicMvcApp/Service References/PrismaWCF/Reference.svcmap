@@ -26,6 +26,7 @@
     <MetadataFile FileName="PrismaService2.xsd" MetadataType="Schema" ID="d9819a4c-9cf0-403d-8a1a-ca490d0cfb5e" SourceId="1" SourceUrl="http://localhost:52504/PrismaService.svc?xsd=xsd0" />
     <MetadataFile FileName="PrismaService.disco" MetadataType="Disco" ID="2eb17f98-d292-4d61-ad97-e5a33c7bcf7a" SourceId="1" SourceUrl="http://localhost:52504/PrismaService.svc?disco" />
     <MetadataFile FileName="PrismaService.wsdl" MetadataType="Wsdl" ID="4f9c78ff-052c-4f23-a1c7-c03331f80a88" SourceId="1" SourceUrl="http://localhost:52504/PrismaService.svc?wsdl" />
+    <MetadataFile FileName="PrismaService5.xsd" MetadataType="Schema" ID="3547fb5a-91b7-4905-91a5-e39978ebb3a1" SourceId="1" SourceUrl="http://localhost:52504/PrismaService.svc?xsd=xsd5" />
     <MetadataFile FileName="PrismaService4.xsd" MetadataType="Schema" ID="21374813-bb56-49b7-878b-e5f6f558843a" SourceId="1" SourceUrl="http://localhost:52504/PrismaService.svc?xsd=xsd4" />
     <MetadataFile FileName="PrismaService3.xsd" MetadataType="Schema" ID="421ab349-9a06-45d1-8048-001abd813d78" SourceId="1" SourceUrl="http://localhost:52504/PrismaService.svc?xsd=xsd3" />
     <MetadataFile FileName="PrismaService.xsd" MetadataType="Schema" ID="89f8d7bb-d72d-4466-94e9-15b80e73dadf" SourceId="1" SourceUrl="http://localhost:52504/PrismaService.svc?xsd=xsd2" />

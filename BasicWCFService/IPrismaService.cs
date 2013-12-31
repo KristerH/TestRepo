@@ -28,6 +28,6 @@ namespace TwoToWin.Prisma.BasicWCFService
         bool PutWorkRequest(WorkRequest workRequest);
 
         [OperationContract]
-        IEnumerable<WorkRequest> GetWorkRequest(string username);
+        ResponseMessageGetWorkRequest GetWorkRequest(RequestMessageGetWorkRequest request);
     }
 }

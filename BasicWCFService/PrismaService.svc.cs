@@ -239,26 +239,32 @@ namespace TwoToWin.Prisma.BasicWCFService
             return true;
         }
 
-        public IEnumerable<WorkRequest> GetWorkRequest(string username)
+        public ResponseMessageGetWorkRequest GetWorkRequest(RequestMessageGetWorkRequest request)
         {
             List<WorkRequest> workRequestList = new List<WorkRequest>();
 
-            IEnumerable<WOrequest> woRequestList = dbPrisma.WOrequest.Where(x => x.createdby.Equals(username));
+            IEnumerable<WOrequest> woRequestList = dbPrisma.WOrequest.Where(x => x.createdby.Equals(request.Username));
             //TODO: Entitytranslator
             foreach (var req in woRequestList)
             {
                 WorkRequest workRequest = new WorkRequest();
                 workRequest.BuildingCode = req.blbuilding_code;
                 workRequest.CreatedBy = req.createdby;
+                workRequest.CreatedDate = req.createddate;
                 workRequest.Description = req.descr;
                 workRequest.FloorCode = req.blfloor_code;
                 workRequest.RoomCode = req.blroom_code;
                 workRequest.WOActionCode = req.woaction_code;
-
+                workRequest.WORequestCode = req.worequest_code;
+                workRequest.WorkorderCode = req.wo_code;
+                workRequest.WorkorderPartCode = req.partwo_code;
                 workRequestList.Add(workRequest);
             }
 
-            return workRequestList;
+            ResponseMessageGetWorkRequest response = new ResponseMessageGetWorkRequest();
+            response.WorkRequestList = workRequestList;
+
+            return response;
         }
     }
 }
