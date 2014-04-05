@@ -20,9 +20,6 @@ using TwoToWin.Prisma.BasicWCFService.Entities.Message;
 
 namespace TwoToWin.Prisma.BasicWCFService
 {
-    /// <summary>
-    /// En testkommentar
-    /// </summary>
     public class PrismaService : IPrismaService
     {
         private Prisma_FastighetEntities dbPrisma;
