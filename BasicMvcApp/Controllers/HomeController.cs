@@ -299,9 +299,16 @@ namespace BasicMvcApp.Controllers
         //// POST: //
         public virtual ActionResult WorkRequestRowSelected(int? wrNumber)
         {
-            //TODO Här ska jag skicka användaren till en sida som visar detaljer om workrequesten
+         //if (User.Identity.IsAuthenticated)
+         //{
 
-            return View("WorkRequestView");
+             //TODO Här ska jag skicka användaren till en sida som visar detaljer om workrequesten
+             return View("WorkRequestView");
+         //}
+         //else
+         //{
+         //    return View("Index");
+         //}
         }
     }
 }
