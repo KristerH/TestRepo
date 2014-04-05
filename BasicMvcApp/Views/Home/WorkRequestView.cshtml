@@ -1,0 +1,118 @@
+﻿@model BasicMvcApp.Models.WorkRequestModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>WorkRequestView</title>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').find('tr').click(function () {
+                var row = $(this).find('td:first').text();
+                //alert('You clicked ' + row);
+                //$("#myForm").submit(row);
+
+                //$("form").submit();                        
+            });
+        });       
+    </script>
+
+</head>
+    <body>
+        <div>
+            <h2>WorkRequest</h2>
+            <fieldset>
+                <legend>Anmälningar</legend>
+                @if (Model.WorkRequestList != null && Model.WorkRequestList.Any())
+                {
+                    <table id="myTable">
+                        <tr>
+                            <th>
+                                WR Nr
+                            </th>
+                            <th>
+                                Skapad datum
+                            </th>
+                            <th>
+                                WR Status
+                            </th>
+                            <th>
+                                Aktivitet
+                            </th>
+                            <th>
+                                Beskrivning
+                            </th>
+                            <th>
+                                Byggnad
+                            </th>
+                            <th>
+                                Plan
+                            </th>
+                            <th>
+                                Rum
+                            </th>
+                            <th>
+                                AO nr
+                            </th>
+                            <th>
+                                AO Del
+                            </th>
+                            <th>
+                                AO Status
+                            </th>
+                        </tr>
+                        @foreach (var item in Model.WorkRequestList)
+                        {
+                            <tr>
+                                <td>                                    
+                                    @Html.ActionLink(item.WORequestCode.ToString(), "WorkRequestRowSelected", "Home", new {  wrNumber=item.WORequestCode  }, null)                         
+                                </td>
+                                <td>
+                                    @item.CreatedDate
+                                </td>
+                                <td>
+                                    Status saknas
+                                </td>
+                                <td>
+                                    @item.WOActionCode
+                                </td>
+                                <td>
+                                    @item.Description
+                                </td>
+                                <td>
+                                    @item.BuildingCode
+                                </td>
+                                <td>
+                                    @item.FloorCode
+                                </td>
+                                <td>
+                                    @item.RoomCode
+                                </td>
+                                <td>
+                                    @item.WorkorderCode
+                                </td>
+                                <td>
+                                    @item.WorkorderPartCode
+                                </td>
+                                <td>
+                                    Status saknas <!-- Måste antagligen hämtas från workorder tabellen -->
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+                else
+                {
+                    @:<text>No information available</text>
+                }
+            </fieldset>
+        </div>
+    </body>
+</html>
