@@ -19,26 +19,26 @@
         <br/>        
         *@
         
-        <div id="selectedzone">
+        <div id="selectedzone" name="selectedzone">
             @using (Ajax.BeginForm("SelectedZoneChanged", new AjaxOptions { UpdateTargetId = "selectedzone" }))
             {
-                @Html.DropDownListFor(m => m.SelectedZoneCode, new SelectList(Model.ZoneList, "ZoneCode", "Description"), "Välj ett kontor", new {@onchange = "forms(0).submit();"})
-                <br/>
+                @Html.DropDownListFor(m => m.SelectedZoneCode, new SelectList(Model.ZoneList, "ZoneCode", "Description"), "Välj ett kontor", new { @onchange = "forms[0].submit();" })
+                <br />
             }
         </div>
 
-        <div id="selectedbuilding">
+        <div id="selectedbuilding" name="selectedbuilding">
             @using (Ajax.BeginForm("SelectedBuildingChanged", new AjaxOptions { UpdateTargetId = "selectedbuilding" }))
             {
-                @Html.DropDownListFor(m => m.SelectedBuildingCode, new SelectList(Model.BuildingList, "BuildingCode", "Description"), "Välj en byggnad", new {@onchange = "forms(1).submit();"})
-                <br/>
+                @Html.DropDownListFor(m => m.SelectedBuildingCode, new SelectList(Model.BuildingList, "BuildingCode", "Description"), "Välj en byggnad", new { @onchange = "forms[1].submit();" })
+                <br />
             }
         </div>
 
         <div id="selectedfloor">
             @using (Ajax.BeginForm("SelectedFloorChanged", new AjaxOptions { UpdateTargetId = "selectedfloor" }))
             {
-                @Html.DropDownListFor(m => m.SelectedFloorCode, new SelectList(Model.FloorList, "FloorCode", "Description"), "Välj en våning", new {@onchange = "forms(2).submit();"})
+                @Html.DropDownListFor(m => m.SelectedFloorCode, new SelectList(Model.FloorList, "FloorCode", "Description"), "Välj en våning", new {@onchange = "forms[2].submit();"})
                 <br/>
             }
         </div>
@@ -46,7 +46,7 @@
         <div id="selectedroom">
             @using (Ajax.BeginForm("SelectedRoomChanged", new AjaxOptions { UpdateTargetId = "selectedroom" }))
             {
-                @Html.DropDownListFor(m => m.SelectedRoomCode, new SelectList(Model.RoomList, "RoomCode", "Description"), "Välj ett rum",new {@onchange = "forms(3).submit();"})
+                @Html.DropDownListFor(m => m.SelectedRoomCode, new SelectList(Model.RoomList, "RoomCode", "Description"), "Välj ett rum",new {@onchange = "forms[3].submit();"})
                 <br/>
             }
         </div>
@@ -54,7 +54,7 @@
         <div id="selectedaction">
             @using (Ajax.BeginForm("SelectedActionChanged", new AjaxOptions { UpdateTargetId = "selectedaction" }))
             {
-                @Html.DropDownListFor(m => m.SelectedActionCode, new SelectList(Model.ActionList, "ActionCode", "Description"), "Välj en åtgärd",new {@onchange = "forms(4).submit();"})
+                @Html.DropDownListFor(m => m.SelectedActionCode, new SelectList(Model.ActionList, "ActionCode", "Description"), "Välj en åtgärd",new {@onchange = "forms[4].submit();"})
                 <br/>
             }
         </div>
@@ -63,7 +63,7 @@
             Beskrivning
             @using (Ajax.BeginForm("DescriptionChanged", new AjaxOptions { UpdateTargetId = "description" }))
             {
-                @Html.TextAreaFor(m => m.WRDescription,new {@onchange = "forms(5).submit();"})
+                @Html.TextAreaFor(m => m.WRDescription,new {@onchange = "forms[5].submit();"})
                 <br/>
             }
         </div>
@@ -72,7 +72,7 @@
             Telefon
             @using (Ajax.BeginForm("TelephoneChanged", new AjaxOptions { UpdateTargetId = "telephone" }))
             {
-                @Html.TextBoxFor(m => m.TelephoneNumber,new {@onchange = "forms(6).submit();"})
+                @Html.TextBoxFor(m => m.TelephoneNumber,new {@onchange = "forms[6].submit();"})
                 <br/>
             }
         </div>

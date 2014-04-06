@@ -152,6 +152,7 @@
     <Content Include="Service References\PrismaWCF\BasicMvcApp.PrismaWCF.ResponseMessageGetWorkRequest.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\Soulfinder.pubxml" />
     <None Include="Service References\PrismaWCF\PrismaService.disco" />
     <None Include="Service References\PrismaWCF\configuration91.svcinfo" />
     <None Include="Service References\PrismaWCF\configuration.svcinfo" />

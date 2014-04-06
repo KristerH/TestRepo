@@ -275,7 +275,7 @@ namespace BasicMvcApp.Controllers
             client.PutWorkRequest(workRequest);
             client.Close();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("WorkRequestView");
         }
 
 
