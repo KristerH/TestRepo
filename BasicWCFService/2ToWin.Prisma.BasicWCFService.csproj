@@ -184,6 +184,7 @@
       <DependentUpon>PrismaModel.edmx</DependentUpon>
       <LastGenOutput>PrismaModel.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\Soulfinder.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

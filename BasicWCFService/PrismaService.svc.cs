@@ -35,8 +35,8 @@ namespace TwoToWin.Prisma.BasicWCFService
             //var connStr = System.Configuration.ConfigurationManager.ConnectionStrings["LoggingDB"].ConnectionString;
             //listener.LogToSqlDatabase("Prisma",connStr);
             
-            var sqlListener = SqlDatabaseLog.CreateListener("PrismaWCF", "Data Source=.\\sqlexpress;Initial Catalog=Logging;Integrated Security=True");
-            sqlListener.EnableEvents(BasicLogger.Log, System.Diagnostics.Tracing.EventLevel.Informational);
+            //var sqlListener = SqlDatabaseLog.CreateListener("PrismaWCF", "Data Source=.\\sqlexpress;Initial Catalog=Logging;Integrated Security=True");
+            //sqlListener.EnableEvents(BasicLogger.Log, System.Diagnostics.Tracing.EventLevel.Informational);
         }
 
         public ResponseMessageGetAllZones GetAllZones(RequestMessageGetAllZones request)
