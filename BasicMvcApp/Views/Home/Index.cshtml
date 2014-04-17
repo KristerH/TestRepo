@@ -18,7 +18,7 @@
         @Html.Partial("~/Views/Home/_SelectRoomPartial.cshtml")
         <br/>        
         *@
-        
+        <br>
         <div id="selectedzone" name="selectedzone">
             @using (Ajax.BeginForm("SelectedZoneChanged", new AjaxOptions { UpdateTargetId = "selectedzone" }))
             {
